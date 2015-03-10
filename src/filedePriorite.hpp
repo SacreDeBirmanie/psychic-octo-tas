@@ -14,19 +14,37 @@
  * @brief Patron de classe implémentant des tables de hashages K-->V
  * 
  */
-template <typename K, class Comparateur=less<K>>
+template <typename K>
 class filedePriorite{
 	private:
-		K tableauDesValeurs[500];
-		int nb_elements;
-		int indiceCourant;
+		K _tableauDesValeurs[500];
+		int _nb_elements;
 		
 
 	public :
+		/**
+		 * constructeur de la file de priorite
+		 */
+		filedePriorite();
+		/**
+		 * cette fonction permet de savoir si la file est vide ou non
+		 * @return un booléen à vraie si la file est vide, false si elle contient des élements
+		 */
 		bool estVide();
+		/**
+		 * cette fonction permet de récupérer l'élement racine de la file (le plus grand selon le comparateur)
+		 * @return un type K, le plus grand élement de la file
+		 */
 		K premier();
+		/**
+		 * cette procédure permet d'ajouter un élement dans la file
+		 * @param element l'élement à ajouter dans la file
+		 */
 		void enfiler(K element);
-		K defiler();
+		/**
+		 * cette procédure permet d'enlever la racine de la file ( le plus grand élement selon le comparateur )
+		 */
+		void defiler();
 
 };
 
