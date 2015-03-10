@@ -7,6 +7,7 @@
 #ifndef FILEDEPRIORITE_HPP
 #define FILEDEPRIORITE_HPP
 
+#include <stdexcept>
 
 /**
  * @class filedePriorite<K,V> htable.hpp

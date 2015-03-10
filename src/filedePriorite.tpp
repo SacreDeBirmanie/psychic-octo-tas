@@ -22,6 +22,8 @@ bool filedePriorite<K>::estVide(){
 
 template<typename K>
 K filedePriorite<K>::premier(){
+	if(_nb_elements == 0)
+		throw std::string("/\\*****ERREUR  :: LA FILE EST VIDE, FONCTION PREMIER SANS EFFET /_\\*****\n");
 	return _tableauDesValeurs[0];
 }
 
@@ -43,6 +45,10 @@ void filedePriorite<K>::enfiler(K element){
 
 template<typename K>
 void filedePriorite<K>::defiler(){
+	if(_nb_elements == 0)
+		throw std::string("/\\*****ERREUR  :: LA FILE EST VIDE, FONCTION DEFILER SANS EFFET /_\\***** \n");
+
+
 	int courant = 0;
 	bool trouve = false;
 	K tmp;

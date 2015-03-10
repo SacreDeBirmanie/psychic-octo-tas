@@ -6,6 +6,13 @@ using namespace std;
 int main(int argc, char const *argv[])
 {
 	filedePriorite<int> mafile;
+	cout<<"RESULTAT ATTENDU (PREMIER) [levé d'exeption] :";
+	try{
+	mafile.premier();
+	}
+	catch(const std::string & Msg){
+		std::cerr << Msg;
+	}
 	mafile.enfiler(3);
 	mafile.enfiler(5);
 	mafile.enfiler(7);
@@ -57,6 +64,14 @@ int main(int argc, char const *argv[])
 
 	cout<<"RESULTAT ATTENDU (ESTVIDE) [1(vrai)] :";
 	cout<<mafile.estVide()<<endl;
+
+	cout<<"RESULTAT ATTENDU (DEFILER) [levé d'exeption] :";
+	try{
+	mafile.defiler();
+	}
+	catch(const std::string & Msg){
+		std::cerr << Msg;
+	}
 
 
 	return 0;
