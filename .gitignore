@@ -3,10 +3,9 @@
 *.exe
 # Ignorer tous les fichiers compilé
 *.o
-# à l'exception de foo.html qui est maintenu à la main
+# à l'exception de nom_fichier.extension qui est maintenu à la main
 #!nom_fichier.extension
 # Ignorer les objets et les archives
 #*.[oa]
-
 #ignorer les fichiers lock
-.~lock*
+.~lock.*
