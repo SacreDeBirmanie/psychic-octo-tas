@@ -7,3 +7,6 @@
 #!nom_fichier.extension
 # Ignorer les objets et les archives
 #*.[oa]
+
+#ignorer les fichiers lock
+.~lock*
