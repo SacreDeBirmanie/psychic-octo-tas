@@ -1,11 +1,13 @@
 #include "filedePriorite.hpp"
+#include "filedePrioriteN.hpp"
+#include "ComparateurCaddie.cpp"
 #include <iostream>
 
 using namespace std;
 
 int main(int argc, char const *argv[])
 {
-	filedePriorite<int> mafile;
+	filedePrioriteN<int,ComparateurCaddie> mafile;
 	cout<<"RESULTAT ATTENDU (PREMIER) [levé d'exeption] :";
 	//vérification de la levé de l'exeption pour premier
 	try{
@@ -48,22 +50,22 @@ int main(int argc, char const *argv[])
 	mafile.enfiler(3);
 
 	cout<<"RESULTAT ATTENDU (PREMIER,ESTVIDE) [9,0(faux)] :";
-	cout<<mafile.premier()<<endl;
+	cout<<mafile.premier()<<","<<mafile.estVide()<<endl;
 	mafile.defiler();
 	cout<<"RESULTAT ATTENDU (PREMIER,ESTVIDE) [8,0(faux)] :";
-	cout<<mafile.premier()<<endl;
+	cout<<mafile.premier()<<","<<mafile.estVide()<<endl;
 	mafile.defiler();
 	cout<<"RESULTAT ATTENDU (PREMIER,ESTVIDE) [4,0(faux)] :";
-	cout<<mafile.premier()<<endl;
+	cout<<mafile.premier()<<","<<mafile.estVide()<<endl;
 	mafile.defiler();
 	cout<<"RESULTAT ATTENDU (PREMIER,ESTVIDE) [3,0(faux)] :";
-	cout<<mafile.premier()<<endl;
+	cout<<mafile.premier()<<","<<mafile.estVide()<<endl;
 	mafile.defiler();
 	cout<<"RESULTAT ATTENDU (PREMIER,ESTVIDE) [3,0(faux)] :";
-	cout<<mafile.premier()<<endl;
+	cout<<mafile.premier()<<","<<mafile.estVide()<<endl;
 	mafile.defiler();
 	cout<<"RESULTAT ATTENDU (PREMIER,ESTVIDE) [3,0(faux)] :";
-	cout<<mafile.premier()<<endl;
+	cout<<mafile.premier()<<","<<mafile.estVide()<<endl;
 	mafile.defiler();
 
 	cout<<"RESULTAT ATTENDU (ESTVIDE) [1(vrai)] :";
