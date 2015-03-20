@@ -11,7 +11,7 @@ int main()
 {
    Magasin m("entrepot_11.txt");
 
-   Chariot</*À DÉFINIR*/> caddie(10.0);
+   Chariot<FPtas> caddie(10.0);
   
    /* À COMPLÉTER */
    

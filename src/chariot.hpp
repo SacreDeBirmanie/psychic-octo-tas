@@ -10,6 +10,7 @@
 #define __CHARIOT_HPP__
 
 #include "produit.hpp"
+#include <assert.h>
 
 /**
  * @class Mappe<K,V> mappe.hpp
