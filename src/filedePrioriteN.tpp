@@ -54,7 +54,6 @@ void filedePrioriteN<K,Comparateur>::defiler(){
 	bool trouve = false;
 	K tmp;
 	_nb_elements = _nb_elements - 1;
-	std::cout<<"putain !!!!::"<<_tableauDesValeurs[_nb_elements]<<"["<<_nb_elements<<"]"<<std::endl;
 	_tableauDesValeurs[0] = _tableauDesValeurs[_nb_elements];
 	while ( courant <= _nb_elements && !trouve ) {
 

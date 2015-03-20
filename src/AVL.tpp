@@ -15,6 +15,7 @@ template<typename Valeur>
 			balance = ba - Math.max(bb, 0) - 1;
 			b.balance = Math.min(ba-2, Math.min(ba+bb, bb-1));
 	}
+
 template<typename Valeur>	
 		void rotationD() {
 			AVL<Valeur> b = filsG;
@@ -32,11 +33,13 @@ template<typename Valeur>
 			balance = ba - Math.max(bb, 0) - 1;
 			b.balance = Math.min(ba-2, Math.min(ba+bb, bb-1));
 		}
+
 template<typename Valeur>
 		void dRotationG() {
 			filsD.rotationD();
 			rotationG();
 		}
+
 template<typename Valeur>	
 		void dRotationD() {
 			filsG.rotationG();
@@ -57,9 +60,28 @@ template<typename Valeur>
 		Valeur getValeur() {
 			return valeur;
 		}
+
+template<typename Valeur>	
+		int ajouter(AVL<K> arbre) {
+			int h = 1;
+			if(etiquette < arbre->_etiquette) {
+				if(filsD != null) h = filsD.ajouter(arbre);
+				else filsD = arbre;
+			}
+			else if(etiquette > arbre->_etiquette) {
+				if(filsG != null) h = filsG.ajouter(arbre);
+				else filsG = arbre;
+				h = -h;
+			}
+			else h = 0;
+			balance += h;
+			//equilibrage();
+			if(balance == 0) return 0;
+			else return 1;
+		}
 		
 template<typename Valeur>	
-		int ajouter(int e, Valeur v) {
+		int ajouter(Valeur e) {
 			int h = 1;
 			if(etiquette < e) {
 				if(filsD != null) h = filsD.ajouter(e,v);
@@ -116,5 +138,9 @@ template<typename Valeur>
 			}
 			else return true;
 		}
-}
+
+template<typename Valeur>
+	AVL<K> * supprimer(){
+
+	}
 

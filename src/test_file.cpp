@@ -1,6 +1,7 @@
 #include "filedePriorite.hpp"
 #include "filedePrioriteN.hpp"
 #include "ComparateurCaddie.cpp"
+#include "ComparateurCaddieInverse.cpp"
 #include <iostream>
 
 using namespace std;
