@@ -9,20 +9,8 @@ class ArbreBinaire  {
 		
 	public:
 		ArbreBinaire(int e, Valeur v);
-	
-		Valeur getValeur();
-		
-		int ajouter(AVL<K> * arbre);
 
-		int ajouter(Valeur e);
-	
-		void equilibrage();
-
-		ArrayList<Valeur> prefix();
-	
-		AVL<Valeur> racine();
-	
-		bool appartient(int e);
+		ArbreBinaire<Valeur> ajouter(Valeur e);
 
 		AVL<K> * supprimer();
 }

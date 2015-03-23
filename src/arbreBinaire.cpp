@@ -26,5 +26,9 @@ template<typename Valeur>
 	}
 template<typename Valeur>
 	ArbreBinaire<K> * supprimer(){
-
+		if(_filsD == null){
+			if(_filsG !=null){
+				_pere._filsG = _filsG;
+			}
+		}
 	}
