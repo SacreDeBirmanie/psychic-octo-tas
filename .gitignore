@@ -1,6 +1,8 @@
 # Les ligne commençant par '#' sont des commentaires.
 # Ignorer tous les fichiers d'exécution
 *.exe
+*.out
+*.app
 # Ignorer tous les fichiers compilé
 *.o
 # à l'exception de nom_fichier.extension qui est maintenu à la main
