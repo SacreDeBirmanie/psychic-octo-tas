@@ -1,12 +1,18 @@
+#include <vector>
+#include <algorithm>
+#include <cstddef>
+#include <iostream>
+#include <assert.h>
+
 template<typename Valeur>
 class AVL  {
 	private : 
 		Valeur _etiquette;
 		bool _marque;
-		//Valeur _valeur;
-		AVL<Valeur> _pere;
-		AVL<Valeur> _filsG;
-		AVL<Valeur> _filsD;
+		
+		AVL<Valeur> * _pere;
+		AVL<Valeur> * _filsG;
+		AVL<Valeur> * _filsD;
 
 		int _nbNoeud;
 		
@@ -21,32 +27,35 @@ class AVL  {
 		void dRotationD();
 	
 	public:
-		AVL(int e, Valeur v);
+		AVL(Valeur e);
 
 		Valeur getEtiquette();
 
-		AVL<Valeur> getPere();
+		AVL<Valeur> * getPere();
 
-		AVL<Valeur> getfilsG();
+		AVL<Valeur> * getfilsG();
 
-		AVL<Valeur> getfilsD();
+		AVL<Valeur> * getfilsD();
 
 		bool getMarque();
 
 		int getNbNoeud();
 
+		void setMarque(bool marque);
+
 		
-		int ajouter(AVL<K> * arbre);
+		int ajouter(AVL<Valeur> * arbre);
 
 		int ajouter(Valeur e);
 	
 		void equilibrage();
 
-		ArrayList<Valeur> prefix();
+		std::vector<Valeur> prefix();
 	
-		AVL<Valeur> racine();
+		AVL<Valeur> * racine();
 	
-		bool appartient(int e);
+		bool appartient(Valeur e);
 
-		AVL<K> * supprimer();
-}
+};
+
+#include "AVL.tpp"

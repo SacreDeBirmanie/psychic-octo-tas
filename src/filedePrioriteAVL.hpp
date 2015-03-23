@@ -4,8 +4,8 @@
 * @since 11/02/2015
 * @brief Définition du type filedePriorite générique par type des valeurs
 **/
-#ifndef FILEDEPRIORITEBINAIRE_HPP
-#define FILEDEPRIORITEBINAIRE_HPP
+#ifndef FILEDEPRIORITEAVL_HPP
+#define FILEDEPRIORITEAVL_HPP
 #include <stdexcept>
 #include "AVL.hpp"
 /**
@@ -15,16 +15,16 @@
 *
 */
 template <typename K>
-	class filedePrioriteBinaire<K>{
+	class filedePrioriteAVL{
 		private:
-			ArbreBinaire<K> _racine;
-			ArbreBinaire<K> * _minimum;
+			AVL<K> *_racine;
+			AVL<K> *_minimum;
 			int _nb_elements;
 		public :
 			/**
 			* constructeur de la file de priorite
 			*/
-			filedePrioriteBinaire();
+			filedePrioriteAVL();
 			/**
 			* cette fonction permet de savoir si la file est vide ou non
 			* @return un booléen à vraie si la file est vide, false si elle contient des élements
@@ -46,5 +46,5 @@ template <typename K>
 			void defiler();
 	};
 //---------------------------------------
-#include "filedePrioriteBinaire.tpp"
+#include "filedePrioriteAVL.tpp"
 #endif
