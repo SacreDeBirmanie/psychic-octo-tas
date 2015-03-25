@@ -1,14 +1,15 @@
 #include "filedePriorite.hpp"
 #include "filedePrioriteN.hpp"
-#include "ComparateurCaddie.cpp"
-#include "ComparateurCaddieInverse.cpp"
+
+#include "filedePrioriteAVL.hpp"
+#include "Comparateur.cpp"
 #include <iostream>
 
 using namespace std;
 
 int main(int argc, char const *argv[])
 {
-	filedePrioriteN<int,ComparateurCaddie> mafile;
+	filedePrioriteAVL<int> mafile;
 	cout<<"RESULTAT ATTENDU (PREMIER) [levé d'exeption] :";
 	//vérification de la levé de l'exeption pour premier
 	try{

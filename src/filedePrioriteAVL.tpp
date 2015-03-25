@@ -22,46 +22,48 @@ template<typename K>
 
 template<typename K>
 	K filedePrioriteAVL<K>::premier(){
-		return _minimum;
+		if(_nb_elements == 0)
+			throw std::string("/\\*****ERREUR :: LA FILE EST VIDE, FONCTION PREMIER SANS EFFET /_\\*****\n");
+		return _minimum->getEtiquette();
 	}
 
 template<typename K>
 	void filedePrioriteAVL<K>::enfiler(K element){
 
-		if(_nb_elements ==0){
-			_racine = new AVL<K>(element);
-			_nb_elements++;
-			_minimum = _racine;
+		AVL<K> * arbre  = new AVL<K>(element);
+		if(_nb_elements>0){
+			_racine->ajouter(arbre);
+			_racine = _racine->racine();
+
+			if( element <=_minimum->getEtiquette()){
+				_minimum = _racine->racine();
+			}
+
 		}
 		else{
-			_nb_elements++;
-			AVL<K> * tmp = new AVL<K>(element);
-			_racine.ajouter(tmp);
-
-			if(_minimum->getEtiquette() >tmp->getEtiquette()){
-				_minimum = tmp;
-			}
+			_racine = arbre;
+			_minimum = arbre;
 		}
-		_racine = _racine->racine();
+		
+		_nb_elements++;
 	}
 
 template<typename K>
 void filedePrioriteAVL<K>::defiler(){
-	if(_minimum->getfilsD !=NULL){
-		_minimum->setMarque(true);
-		_minimum = _minimum->getfilsG();
-		
-		while(_minimum->getfilsG() !=NULL)
-			_minimum = _minimum->getfilsG();
+	assert(_minimum->getFilsG() ==NULL);
+
+	if(_minimum->getFilsD() != NULL){
+		_minimum = _minimum->getFilsD();
+		while(_minimum->getFilsG() !=NULL)
+			_minimum = _minimum->getFilsG();
 	}
 	else{
-		AVL<K> * tmp = _minimum;
-		_minimum = _minimum->getPere();
-		
-		while(_minimum->getMarque()){
-			tmp = _minimum;
+		while(_minimum->getMarque()==true){
 			_minimum = _minimum->getPere();
-			delete(tmp);
+			_minimum->supprimerFilsGD();
 		}
 	}
+
+	_minimum->setMarque(true);
+	_nb_elements--;
 }

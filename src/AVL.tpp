@@ -62,6 +62,15 @@ template<typename Valeur>
 		}
 
 template<typename Valeur>
+	bool AVL<Valeur>::estFeuille() {
+			if(_filsG == NULL && _filsD == NULL)
+				return true;
+			else
+				return false;
+	}
+
+
+template<typename Valeur>
 	Valeur AVL<Valeur>::getEtiquette() {
 			return _etiquette;
 	}
@@ -74,12 +83,12 @@ template<typename Valeur>
 		
 
 template<typename Valeur>
-	AVL<Valeur> * AVL<Valeur>::getfilsG() {
+	AVL<Valeur> * AVL<Valeur>::getFilsG() {
 			return _filsG;
 	}
 		
 template<typename Valeur>
-	AVL<Valeur> * AVL<Valeur>::getfilsD() {
+	AVL<Valeur> * AVL<Valeur>::getFilsD() {
 			return _filsD;
 	}
 		
@@ -97,24 +106,62 @@ template<typename Valeur>
 	void AVL<Valeur>::setMarque(bool marque) {
 			_marque = marque;
 	}
+
+template<typename Valeur>
+	void AVL<Valeur>::supprimerFilsGD() {
+			if(_filsG != NULL){
+				delete(_filsG);
+				_filsG = NULL;
+			}
+			else if(_filsD !=NULL){
+				delete(_filsD);
+				_filsD = NULL;
+			}
+	}
+
+template<typename Valeur>
+	void AVL<Valeur>::supprimerFilsDG() {
+			if(_filsD != NULL){
+				delete(_filsD);
+				_filsD = NULL;
+			}
+			else if(_filsG !=NULL){
+				delete(_filsG);
+				_filsG = NULL;
+			}
+	}
 		
 template<typename Valeur>	
 		int AVL<Valeur>::ajouter(AVL<Valeur> * arbre) {
-			int h = 1;
-			if(_etiquette < arbre->_etiquette) {
-				if(_filsD != NULL) h = _filsD->ajouter(arbre);
-				else _filsD = arbre;
-			}
-			else if(_etiquette > arbre->_etiquette) {
-				if(_filsG != NULL) h = _filsG->ajouter(arbre);
-				else _filsG = arbre;
+			int h;
+			if(_etiquette >= arbre->_etiquette) {
+				if(_filsG != NULL) 
+					h = _filsG->ajouter(arbre);
+				else 
+					_filsG = arbre;
 				h = -h;
 			}
-			else h = 0;
-			_balance += h;
-			equilibrage();
-			if(_balance == 0) return 0;
-			else return 1;
+			else if(_etiquette < arbre->_etiquette){
+				if(_filsD != NULL) 
+					h = _filsD->ajouter(arbre);
+				else 
+					_filsD = arbre;
+			}
+			else{
+				return h=0;
+			}
+
+			if(h = 0)
+				return 0;
+			else{
+				_balance = _balance + h;
+				equilibrage();
+			}
+
+			if(_balance = 0)
+				return 0;
+			else
+				return 1;
 		}
 		
 /*template<typename Valeur>	
@@ -147,7 +194,7 @@ template<typename Valeur>
 template<typename Valeur>	
 		int AVL<Valeur>::ajouter(Valeur e) {
 			int h;
-			if(_etiquette > e) {
+			if(_etiquette >= e) {
 				if(_filsG != NULL) 
 					h = _filsG->ajouter(e);
 				else 

@@ -28,6 +28,8 @@ monarbre = monarbre->racine();
 	monarbre->ajouter(7);
 	monarbre = monarbre->racine();
 	monarbre->ajouter(8);
+	monarbre = monarbre->racine();
+	monarbre->ajouter(8);
 monarbre = monarbre->racine();
 	cout<<"fin de l'ajout"<<endl;
 	cout<<monarbre->getEtiquette()<<endl;

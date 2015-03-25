@@ -29,19 +29,25 @@ class AVL  {
 	public:
 		AVL(Valeur e);
 
+		bool estFeuille();
+
 		Valeur getEtiquette();
 
 		AVL<Valeur> * getPere();
 
-		AVL<Valeur> * getfilsG();
+		AVL<Valeur> * getFilsG();
 
-		AVL<Valeur> * getfilsD();
+		AVL<Valeur> * getFilsD();
 
 		bool getMarque();
 
 		int getNbNoeud();
 
 		void setMarque(bool marque);
+
+		void supprimerFilsGD();
+
+		void supprimerFilsDG();
 
 		
 		int ajouter(AVL<Valeur> * arbre);
