@@ -8,6 +8,7 @@
 **/
 #include <typeinfo>
 #include <iostream>
+#include <vector>
 //---------------------------------------
 //Constructeur
 template<typename K>
@@ -36,7 +37,7 @@ template<typename K>
 			_racine = _racine->racine();
 
 			if( element <=_minimum->getEtiquette()){
-				_minimum = _racine->racine();
+				_minimum = arbre;
 			}
 
 		}
@@ -67,3 +68,38 @@ void filedePrioriteAVL<K>::defiler(){
 	_minimum->setMarque(true);
 	_nb_elements--;
 }
+
+template<typename K>
+void filedePrioriteAVL<K>::afficher(){
+	std::vector<K> in,pre,su;
+	
+	in = _racine->infix();
+	pre = _racine->prefix();
+	su = _racine->suffix();
+	int i;
+	std::cout<<"prefix : [";
+	for(i =0;i < pre.size();++i)
+		std::cout<<pre.at(i)<<",";
+	std::cout<<"]"<<std::endl;
+	
+
+	std::cout<<"infix : [";
+	for(i =0;i < in.size();++i)
+		std::cout<<in.at(i)<<",";
+	std::cout<<"]"<<std::endl;
+	
+
+	std::cout<<"suffix : [";
+	for(i =0;i < su.size();++i)
+		std::cout<<su.at(i)<<",";
+	std::cout<<"]"<<std::endl;
+
+}
+
+template<typename K>
+void filedePrioriteAVL<K>::racine(){
+	std::cout<<_racine->getEtiquette()<<std::endl;
+
+}
+
+

@@ -240,21 +240,59 @@ template<typename Valeur>
 template<typename Valeur>
 		std::vector<Valeur> AVL<Valeur>::prefix() {
 			std::vector<Valeur> liste;
+			liste.push_back(_etiquette);
 			if(_filsG != NULL){
-				std::cout<<_filsG->_etiquette<<std::endl;
 				std::vector<Valeur> tmpG = _filsG->prefix();
+				typename std::vector<Valeur>::iterator itG = tmpG.begin();
+				for(itG;itG != tmpG.end();++itG)
+					liste.push_back(*itG);
+			}
+			
+			if(_filsD != NULL){
+				std::vector<Valeur> tmpD = _filsD->prefix();
+				typename std::vector<Valeur>::iterator itD = tmpD.begin();
+				for(itD;itD != tmpD.end();++itD)
+					liste.push_back(*itD);
+			}
+			return liste;
+		}
+
+template<typename Valeur>
+		std::vector<Valeur> AVL<Valeur>::infix() {
+			std::vector<Valeur> liste;
+			if(_filsG != NULL){
+				std::vector<Valeur> tmpG = _filsG->infix();
 				typename std::vector<Valeur>::iterator itG = tmpG.begin();
 				for(itG;itG != tmpG.end();++itG)
 					liste.push_back(*itG);
 			}
 			liste.push_back(_etiquette);
 			if(_filsD != NULL){
-				std::cout<<_filsD->_etiquette<<std::endl;
-				std::vector<Valeur> tmpD = _filsD->prefix();
+				std::vector<Valeur> tmpD = _filsD->infix();
 				typename std::vector<Valeur>::iterator itD = tmpD.begin();
 				for(itD;itD != tmpD.end();++itD)
 					liste.push_back(*itD);
 			}
+			return liste;
+		}
+
+template<typename Valeur>
+		std::vector<Valeur> AVL<Valeur>::suffix() {
+			std::vector<Valeur> liste;
+			if(_filsG != NULL){
+				std::vector<Valeur> tmpG = _filsG->suffix();
+				typename std::vector<Valeur>::iterator itG = tmpG.begin();
+				for(itG;itG != tmpG.end();++itG)
+					liste.push_back(*itG);
+			}
+			
+			if(_filsD != NULL){
+				std::vector<Valeur> tmpD = _filsD->suffix();
+				typename std::vector<Valeur>::iterator itD = tmpD.begin();
+				for(itD;itD != tmpD.end();++itD)
+					liste.push_back(*itD);
+			}
+			liste.push_back(_etiquette);
 			return liste;
 		}
 

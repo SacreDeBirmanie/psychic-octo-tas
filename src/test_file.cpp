@@ -27,7 +27,9 @@ int main(int argc, char const *argv[])
 	mafile.enfiler(4);
 	mafile.enfiler(3);
 	mafile.enfiler(8);
-
+	
+	mafile.afficher();
+	
 	cout<<"RESULTAT ATTENDU (PREMIER) [8] :";
 	cout<<mafile.premier()<<endl;
 	mafile.defiler();
@@ -50,6 +52,7 @@ int main(int argc, char const *argv[])
 	mafile.enfiler(3);
 	mafile.enfiler(9);
 	mafile.enfiler(3);
+	
 
 	cout<<"RESULTAT ATTENDU (PREMIER,ESTVIDE) [9,0(faux)] :";
 	cout<<mafile.premier()<<","<<mafile.estVide()<<endl;

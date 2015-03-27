@@ -57,6 +57,8 @@ class AVL  {
 		void equilibrage();
 
 		std::vector<Valeur> prefix();
+		std::vector<Valeur> suffix();
+		std::vector<Valeur> infix();
 	
 		AVL<Valeur> * racine();
 	

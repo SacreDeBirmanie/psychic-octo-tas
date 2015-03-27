@@ -44,6 +44,10 @@ template <typename K>
 			* cette procédure permet d'enlever la racine de la file ( le plus grand élement selon le comparateur )
 			*/
 			void defiler();
+			
+			void afficher();
+			
+			void racine();
 	};
 //---------------------------------------
 #include "filedePrioriteAVL.tpp"
