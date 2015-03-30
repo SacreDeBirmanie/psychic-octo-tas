@@ -9,10 +9,6 @@
 #include <iostream>
 
 //------------------------------------------------------------------------------
-//Constructeur par défaut
-Produit::Produit(){}
-
-//------------------------------------------------------------------------------
 Produit::Produit(std::string n, double p, unsigned int e)
 // initialisation à la déclaration des attributs
 : nom_(n), poids_(p), codebarre_(e)

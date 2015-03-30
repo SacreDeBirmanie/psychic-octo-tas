@@ -9,12 +9,10 @@
 #ifndef __CHARIOT_HPP__
 #define __CHARIOT_HPP__
 
-#include "filedePriorite.hpp"
 #include "produit.hpp"
-#include <assert.h>
 
 /**
- * @class Chariot<K,V> chariot.hpp
+ * @class Mappe<K,V> mappe.hpp
  * 
  * @brief Patron de classe implémentant un chariot dans lequel les produits les 
  * plus lourds vont dans le fond

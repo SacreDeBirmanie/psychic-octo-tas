@@ -28,41 +28,36 @@ class Produit
 
    public :
       // méthodes
-	/**
-	* @brief Constructeur par défaut, crée un produit
-	*/
-	Produit();
+      /**
+       * @brief Constructeur, crée un produit
+       * @param n Le nom du produit
+       * @param p Son poids
+       * @param e Son étiquette
+       */
+      Produit(std::string n, double p, unsigned int e);
 
-	/**
-	* @brief Constructeur, crée un produit
-	* @param n Le nom du produit
-	* @param p Son poids
-	* @param e Son étiquette
-	*/
-	Produit(std::string n, double p, unsigned int e);
+      /**
+       * @brief Accès au nom du produit
+       * @return le nom du produit
+       */
+      std::string nom() const;
 
-	/**
-	* @brief Accès au nom du produit
-	* @return le nom du produit
-	*/
-	std::string nom() const;
+      /**
+       * @brief Accès au poids du produit
+       * @return le poids du produit
+       */
+      double poids() const;
 
-	/**
-	* @brief Accès au poids du produit
-	* @return le poids du produit
-	*/
-	double poids() const;
-
-	/**
-	* @brief Accès à l'étiquette du produit
-	* @return le code-barre du produit
-	*/
-	unsigned int codebarre() const;
-
-	/**
-	* @brief Affichage des données du produit sur la sortie standard
-	*/
-	void afficher() const;
+      /**
+       * @brief Accès à l'étiquette du produit
+       * @return le code-barre du produit
+       */
+      unsigned int codebarre() const;
+      
+      /**
+       * @brief Affichage des données du produit sur la sortie standard
+       */
+      void afficher() const;
 };
 
 
