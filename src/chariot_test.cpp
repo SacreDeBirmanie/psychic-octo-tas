@@ -43,7 +43,7 @@ int main()
 	cout << "CONSTRUCTION" << endl;
 	cout << "------------" << endl;
 	START;
-	Chariot<filedePriorite> caddie(10.0);
+	Chariot<FileDePriorite> caddie(10.0);
 	STOP;
 	cout << ">>> Temps : " << TEMPS << "s" << endl << endl;
 

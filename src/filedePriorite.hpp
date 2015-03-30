@@ -14,7 +14,7 @@
 *
 */
 template <typename K>
-	class filedePriorite{
+	class FileDePriorite{
 		private:
 			K _tableauDesValeurs[500];
 			int _nb_elements;
@@ -22,11 +22,11 @@ template <typename K>
 			/**
 			* constructeur de la file de priorite
 			*/
-			filedePriorite();
+			FileDePriorite();
 			/**
 			* constructeur de la file de priorite
 			*/
-			~filedePriorite();
+			~FileDePriorite();
 			/**
 			* cette fonction permet de savoir si la file est vide ou non
 			* @return un booléen à vraie si la file est vide, false si elle contient des élements

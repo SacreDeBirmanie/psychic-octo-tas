@@ -1,38 +1,38 @@
 /**
-* @file filedePriorite.tpp
+* @file FileDePriorite.tpp
 * @author Gonnord Kévin, Vallée Sébastien
 * @since 11/02/2015
-* @brief Implémentation de la classe filedePriorite
+* @brief Implémentation de la classe FileDePriorite
 *
-* @b Note s'agissant d'un patron de classe, ce fichier est inclus dans filedePriorite.hpp
+* @b Note s'agissant d'un patron de classe, ce fichier est inclus dans FileDePriorite.hpp
 **/
 #include <typeinfo>
 #include <iostream>
 //---------------------------------------
 //Constructeur
 template<typename K>
-	filedePriorite<K>::filedePriorite(){
+	FileDePriorite<K>::FileDePriorite(){
 		_nb_elements = 0;
 	}
 //Destructeur
 template<typename K>
-	filedePriorite<K>::~filedePriorite(){
+	FileDePriorite<K>::~FileDePriorite(){
 	}
 
 template<typename K>
-	bool filedePriorite<K>::estVide(){
+	bool FileDePriorite<K>::estVide(){
 		return _nb_elements==0;
 	}
 
 template<typename K>
-	K filedePriorite<K>::premier(){
+	K FileDePriorite<K>::premier(){
 		if(_nb_elements == 0)
 			throw std::string("/\\*****ERREUR :: LA FILE EST VIDE, FONCTION PREMIER SANS EFFET /_\\*****\n");
 		return _tableauDesValeurs[0];
 	}
 
 template<typename K>
-	void filedePriorite<K>::enfiler(K element){
+	void FileDePriorite<K>::enfiler(K element){
 		_tableauDesValeurs[_nb_elements] = element;
 		int courant = _nb_elements;
 		_nb_elements = _nb_elements + 1;
@@ -46,7 +46,7 @@ template<typename K>
 	}
 
 template<typename K>
-void filedePriorite<K>::defiler(){
+void FileDePriorite<K>::defiler(){
 	if(_nb_elements == 0)
 		throw std::string("/\\*****ERREUR :: LA FILE EST VIDE, FONCTION DEFILER SANS EFFET /_\\***** \n");
 	int courant = 0;
@@ -74,7 +74,7 @@ void filedePriorite<K>::defiler(){
 }
 
 template<typename K>
-	void filedePriorite<K>::afficher(){
+	void FileDePriorite<K>::afficher(){
 	int courant = 0;
 	std::cout<<"LISTE ::(";
 	while(courant<_nb_elements){

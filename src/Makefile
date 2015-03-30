@@ -3,7 +3,7 @@ CFLAGS = -g -std=c++11 -pedantic -Wfatal-errors -Wconversion -Wredundant-decls -
 # liste des fichiers implémentant une Table Associative
 TA = mappe.hpp mappe.tpp
 # liste des fichiers implémentant une File de Priorité
-FP = FPstl.hpp FPstl.tpp FPtas.hpp FPtas.tpp
+FP = filedePrioriteAVL.hpp filedePrioriteAVL.tpp filedePriorite.hpp filedePriorite.tpp
 
 all : chariot_test.exe FP_test.exe
 
