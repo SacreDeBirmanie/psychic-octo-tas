@@ -16,6 +16,13 @@ template<typename K>
 		
 	}
 
+//---------------------------------------
+//Constructeur
+template<typename K>
+	filedePrioriteAVL<K>::~filedePrioriteAVL() : _nb_elements(0),_minimum(NULL){
+		delete _racine;
+	}
+
 template<typename K>
 	bool filedePrioriteAVL<K>::estVide(){
 		return _nb_elements ==0;
@@ -37,13 +44,16 @@ template<typename K>
 			_racine = _racine->racine();
 
 			if( element <=_minimum->getEtiquette()){
+				_minimum->setMarque(false);
 				_minimum = arbre;
+				_minimum->setMarque(true);
 			}
 
 		}
 		else{
 			_racine = arbre;
 			_minimum = arbre;
+			_minimum->setMarque(true);
 		}
 		
 		_nb_elements++;
@@ -51,22 +61,38 @@ template<typename K>
 
 template<typename K>
 void filedePrioriteAVL<K>::defiler(){
+	if(_nb_elements == 0)
+		throw std::string("/\\*****ERREUR :: LA FILE EST VIDE, FONCTION DEFILER SANS EFFET /_\\*****\n");
+
 	assert(_minimum->getFilsG() ==NULL);
 
 	if(_minimum->getFilsD() != NULL){
+
 		_minimum = _minimum->getFilsD();
 		while(_minimum->getFilsG() !=NULL)
 			_minimum = _minimum->getFilsG();
 	}
 	else{
-		while(_minimum->getMarque()==true){
-			_minimum = _minimum->getPere();
-			_minimum->supprimerFilsGD();
-		}
-	}
 
-	_minimum->setMarque(true);
+			while(_minimum->getMarque()==true &&_minimum->getPere() != NULL){
+				_minimum = _minimum->getPere();
+				_minimum->supprimerFilsGD();
+			}
+				
+	}
+		/*if(_minimum->getPere() == NULL){
+			std::cout<<"graou"<<std::endl;
+			delete _minimum;
+			_minimum = NULL;
+			_racine = NULL;
+
+		}*/
+
+	if(_minimum!=NULL)
+		_minimum->setMarque(true);
+
 	_nb_elements--;
+	//std::cout<<"et le minimum est maintenant :"<<_minimum->getEtiquette()<<"_nb_elements : "<<_nb_elements<<std::endl;
 }
 
 template<typename K>

@@ -25,6 +25,8 @@ template <typename K>
 			* constructeur de la file de priorite
 			*/
 			filedePrioriteAVL();
+
+			~filedePrioriteAVL();
 			/**
 			* cette fonction permet de savoir si la file est vide ou non
 			* @return un booléen à vraie si la file est vide, false si elle contient des élements
