@@ -47,11 +47,42 @@ int main()
 	STOP;
 	cout << ">>> Temps : " << TEMPS << "s" << endl << endl;
 
-	
-	cout << "CAPACITE" << endl;
+	cout << "CAPACITE RESTANTE" << endl;
+	cout << "------------" << endl;
+	START;
+	cout << "Capacité : " << caddie.capacite() << endl;
+	STOP;
+	cout << ">>> Temps : " << TEMPS << "s" << endl << endl;
+
+	cout << "AJOUT DES ARTICLES" << endl;
+	cout << "------------" << endl;
+	START;
+	for (auto p : m.catalogue())
+	{
+		caddie.ajouter(p);
+	}
+	STOP;
+	cout << ">>> Temps : " << TEMPS << "s" << endl << endl;
+
+	cout << "CAPACITE RESTANTE" << endl;
 	cout << "------------" << endl;
 	START;
 	caddie.capacite();
+	STOP;
+	cout << ">>> Temps : " << TEMPS << "s" << endl << endl;
+
+	cout << "AFFICHAGE" << endl;
+	cout << "------------" << endl;
+	START;
+	for (auto p : m.catalogue())
+	{
+		p.afficher();
+		cout << " :  prix=";
+		cout.width(4);
+		cout.fill('0');
+		cout << m.tarif(p) << "€";
+		cout << "  qté=" << m.stock(p) << endl;
+	}
 	STOP;
 	cout << ">>> Temps : " << TEMPS << "s" << endl << endl;
 
@@ -62,7 +93,7 @@ int main()
 	STOP;
 	cout << ">>> Temps : " << TEMPS << "s" << endl << endl;
 
-	cout << "CAPACITE" << endl;
+	cout << "CAPACITE RESTANTE" << endl;
 	cout << "------------" << endl;
 	START;
 	caddie.capacite();
