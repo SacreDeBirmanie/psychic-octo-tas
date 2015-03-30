@@ -1,42 +1,42 @@
 template<typename Valeur>
 		void AVL<Valeur>::rotationG() {
 			std::cout<<"rotationG"<<std::endl;
-			AVL<Valeur>  * b = _filsD;
-			int ba = _balance;
-			int bb = b->_balance;
-			std::cout<<"["<<ba<<"]"<<std::endl;
-			std::cout<<"["<<bb<<"]"<<std::endl;
+			AVL<Valeur>  * arbreb = _filsD;
+			int balance_a = _balance;
+			int balance_b = arbreb->_balance;
+			std::cout<<"["<<balance_a<<"]"<<std::endl;
+			std::cout<<"["<<balance_b<<"]"<<std::endl;
 		
-			_filsD = b->_filsG;
-			b->_filsG = this;
+			_filsD = arbreb->_filsG;
+			arbreb->_filsG = this;
 
 			if(_filsD !=NULL){
 				_filsD->_pere = this;
 			}
-			b->_pere =_pere;
-			_pere = b;
-			_balance = ba - std::max(bb, 0) - 1;
-			b->_balance = std::min(ba-2, std::min(ba+bb, bb-1));
+			arbreb->_pere =_pere;
+			_pere = arbreb;
+			_balance = balance_a - std::max(balance_b, 0) - 1;
+			arbreb->_balance = std::min(balance_a-2, std::min(balance_a+balance_b, balance_b-1));
 	}
 
 template<typename Valeur>	
 		void AVL<Valeur>::rotationD() {
 			std::cout<<"rotationD"<<std::endl;
-			AVL<Valeur>  * b = _filsG;
-			int ba = _balance;
-			int bb = b->_balance;
-			std::cout<<"["<<ba<<"]"<<std::endl;
-			std::cout<<"["<<bb<<"]"<<std::endl;
+			AVL<Valeur>  * arbreb = _filsG;
+			int balance_a = _balance;
+			int balance_b = arbreb->_balance;
+			std::cout<<"["<<balance_a<<"]"<<std::endl;
+			std::cout<<"["<<balance_b<<"]"<<std::endl;
 		
-			_filsG = b->_filsD;
-			b->_filsD = this;
+			_filsG = arbreb->_filsD;
+			arbreb->_filsD = this;
 			if(_filsG !=NULL){
 				_filsG->_pere = this;
 			}
-			b->_pere =_pere;
-			_pere = b;
-			_balance = ba - std::max(bb, 0) - 1;
-			b->_balance = std::min(ba-2, std::min(ba+bb, bb-1));
+			arbreb->_pere =_pere;
+			_pere = arbreb;
+			_balance = balance_a - std::max(balance_b, 0) - 1;
+			arbreb->_balance = std::min(balance_a-2, std::min(balance_a+balance_b, balance_b-1));
 		}
 
 template<typename Valeur>
@@ -191,24 +191,21 @@ template<typename Valeur>
 			else return 1;
 		}*/
 
-template<typename Valeur>	
+/*template<typename Valeur>	
 		int AVL<Valeur>::ajouter(Valeur e) {
 			int h;
 			if(_etiquette >= e) {
-				if(_filsG != NULL) 
-					h = _filsG->ajouter(e);
-				else 
-					_filsG = new AVL<Valeur>(e);
-				h = -h;
-			}
-			else if(_etiquette < e){
 				if(_filsD != NULL) 
 					h = _filsD->ajouter(e);
 				else 
 					_filsD = new AVL<Valeur>(e);
+				h = -h;
 			}
-			else{
-				return h=0;
+			else if(_etiquette < e){
+				if(_filsG != NULL) 
+					h = _filsG->ajouter(e);
+				else 
+					_filsG = new AVL<Valeur>(e);
 			}
 
 			if(h = 0)
@@ -218,20 +215,61 @@ template<typename Valeur>
 				equilibrage();
 			}
 
-			if(_balance = 0)
+			if(_balance == 0)
 				return 0;
 			else
 				return 1;
 
+		}*/
+template<typename Valeur>	
+		int AVL<Valeur>::ajouter(Valeur e) {
+
+		int h;
+		std::cout<<"here We Go "<<e<<" : "<<_etiquette<<std::endl;
+		if(e <= _etiquette){
+			if(_filsG != NULL){
+				std::cout<<"ajout filsG"<<e<<" : "<<_etiquette<<std::endl;
+				h =_filsG->ajouter(e);
+			}
+			else{
+				std::cout<<"creation filsG"<<e<<" : "<<_etiquette<<std::endl;
+				_filsG = new AVL<Valeur>(e);
+				_filsG->_pere = this;
+				h = -1;
+			}
 		}
+		else{
+			if(_filsD != NULL){
+				std::cout<<"ajout filsD"<<e<<" : "<<_etiquette<<std::endl;
+				h =_filsD->ajouter(e);
+				
+			}
+			else{
+				std::cout<<"ajout filsD"<<e<<" : "<<_etiquette<<std::endl;
+				_filsD = new AVL<Valeur>(e);
+				_filsD->_pere=this;
+				h = 1;
+			}
+		}
+
+		_balance += h; 
+		equilibrage();
+		return _balance;
+
+
+}
+
 
 template<typename Valeur>	
 		void AVL<Valeur>::equilibrage() {
+			std::cout<<"ALWAYS !"<<std::endl;
 			if(_balance == 2) {
+				std::cout<<"OOOUUUUIIIII"<<std::endl;
 				if(_filsD->_balance >= 0) rotationG();
 				else dRotationG();
 			}
 			else if(_balance == -2) {
+				std::cout<<"NON"<<std::endl;
 				if(_filsG->_balance >= 0) rotationD();
 				else dRotationD();
 			}
