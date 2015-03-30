@@ -8,9 +8,9 @@
 #define FILEDEPRIORITE_HPP
 #include <stdexcept>
 /**
-* @class filedePriorite<K,V> htable.hpp
+* @class filedePriorite<K,V> filedePriorite.hpp
 *
-* @brief Patron de classe implémentant des tables de hashages K-->V
+* @brief Patron de classe implémentant des FP
 *
 */
 template <typename K>
@@ -23,6 +23,10 @@ template <typename K>
 			* constructeur de la file de priorite
 			*/
 			filedePriorite();
+			/**
+			* constructeur de la file de priorite
+			*/
+			~filedePriorite();
 			/**
 			* cette fonction permet de savoir si la file est vide ou non
 			* @return un booléen à vraie si la file est vide, false si elle contient des élements

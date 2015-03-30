@@ -14,6 +14,10 @@ template<typename K>
 	filedePriorite<K>::filedePriorite(){
 		_nb_elements = 0;
 	}
+//Destructeur
+template<typename K>
+	filedePriorite<K>::~filedePriorite(){
+	}
 
 template<typename K>
 	bool filedePriorite<K>::estVide(){

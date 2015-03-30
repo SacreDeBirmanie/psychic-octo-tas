@@ -19,19 +19,18 @@ Chariot<FileDePriorite>::Chariot(double contenance/*=50.0*/)
 template < template <typename T> class FileDePriorite >
 Chariot<FileDePriorite>::~Chariot()
 {
-   /* À COMPLÉTER */
 }
 
 //----------------------------------------------------------------------------------------
 template < template <typename T> class FileDePriorite >
 double Chariot<FileDePriorite>::capacite() const
 {
-   	FileDePriorite<Produit> achat_bis = achats_;
+   	FileDePriorite<Produit> achats_bis = achats_;
 	double capacite = 0;
 
-	while ( !achat_bis.estVide() ) {
-			capacite = capacite + achat_bis.premier().poids();
-			achat_bis.defiler();		
+	while ( !achats_bis.estVide() ) {
+			capacite = capacite + achats_bis.premier().poids();
+			achats_bis.defiler();		
 	}
 	return capacite;
 }
@@ -60,7 +59,7 @@ Produit Chariot<FileDePriorite>::retirer()
 {
       	assert( !achats_.estVide() );
 	
-	achats_.defiler(p);
+	achats_.defiler();
 }
 
 //----------------------------------------------------------------------------------------
@@ -69,12 +68,12 @@ double Chariot<FileDePriorite>::passageEnCaisse(const Magasin & mag)
 {	
    	double cout = 0;
 	
-	while ( !achat_.estVide() ) {
-		if( !mag.enCatalogue(p) ){
+	while ( !achats_.estVide() ) {
+		if( !mag.enCatalogue(achats_.premier()) ){
 			throw std::string("/\\*****ERREUR :: LE PRODUIT N'EST PAS PRESENT DANS LE CATALOGUE /_\\*****\n");
 		}
-		cout = cout + mag.tarif(achat.premier());
-		achat_.defiler();		
+		cout = cout + mag.tarif(achats_.premier());
+		achats_.defiler();		
 	}
 	return cout;
 	
@@ -85,10 +84,10 @@ template < template <typename T> class FileDePriorite >
 bool Chariot<FileDePriorite>::estAchetable(const Magasin & mag)
 {
    	bool achetable = true;
-	FileDePriorite<Produit> achat_bis = achats_;
+	FileDePriorite<Produit> achats_bis = achats_;
 
-	while ( !achat_bis.estVide() ) {
-		if( mag.enCatalogue(achat_bis.premier()) && mag.stock(achat_bis.premier() = 0 ){
+	while ( !achats_bis.estVide() ) {
+		if( mag.enCatalogue(achats_bis.premier()) && mag.stock(achats_bis.premier() = 0) ){
 			achetable = false;
 		}
 	}
