@@ -12,7 +12,7 @@
 //Constructeur
 template<typename K>
 	FileDePriorite<K>::FileDePriorite(){
-		_nb_elements = 0;
+		_nb_elements = 0;	
 	}
 //Destructeur
 template<typename K>
