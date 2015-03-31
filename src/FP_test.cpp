@@ -1,7 +1,7 @@
 #include "FileDePrioriteTAS.hpp"
 
 #include "filedePrioriteAVL.hpp"
-#include "Comparateur.cpp"
+//#include "Comparateur.cpp"
 #include <iostream>
 
 using namespace std;

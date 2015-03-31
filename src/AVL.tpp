@@ -230,7 +230,7 @@ template<typename Valeur>
 		
 template<typename Valeur>	
 		void AVL<Valeur>::ajouter(AVL<Valeur> * arbre) {
-		if(arbre->_etiquette <= _etiquette){
+		if(arbre->_etiquette < _etiquette){
 			if(_filsG != NULL){
 				_filsG->ajouter(arbre);
 				_hauteur = std::max(hauteur(_filsG),hauteur(_filsD))+1;
@@ -242,7 +242,7 @@ template<typename Valeur>
 				_hauteur = std::max(hauteur(_filsD),1);
 			}
 		}
-		else{
+		else if(_etiquette < arbre->_etiquette){
 			if(_filsD != NULL){
 				_filsD->ajouter(arbre);
 				_hauteur = std::max(hauteur(_filsG),hauteur(_filsD))+1;
@@ -251,6 +251,18 @@ template<typename Valeur>
 				_filsD = arbre;
 				_filsD->_pere=this;
 				_hauteur = std::max(hauteur(_filsG),1);
+			}
+		}
+		else{
+			if(_filsG != NULL){
+				_filsG->ajouter(arbre);
+				_hauteur = std::max(hauteur(_filsG),hauteur(_filsD))+1;
+
+			}
+			else{
+				_filsG = arbre;
+				_filsG->_pere = this;
+				_hauteur = std::max(hauteur(_filsD),1);
 			}
 		}
 

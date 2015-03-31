@@ -46,11 +46,20 @@ template<typename K>
 			_racine->ajouter(arbre);
 			_racine = _racine->racine();
 
-			if( element <=_minimum->getEtiquette()){
+			if( element <_minimum->getEtiquette()){
 				_minimum->setMarque(false);
 				_minimum = arbre;
 				_minimum->setMarque(true);
 			}
+			else if(_minimum->getEtiquette()< element){
+				//ne fais rien
+			}
+			else{
+				_minimum->setMarque(false);
+				_minimum = arbre;
+				_minimum->setMarque(true);
+			}
+
 
 		}
 		else{
