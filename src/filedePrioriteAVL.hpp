@@ -2,20 +2,20 @@
 * @file .hpp
 * @author Gonnord Kévin, Vallée Sébastien
 * @since 11/02/2015
-* @brief Définition du type filedePriorite générique par type des valeurs
+* @brief Définition du type FileDePriorite générique par type des valeurs
 **/
-#ifndef FILEDEPRIORITEAVL_HPP
-#define FILEDEPRIORITEAVL_HPP
+#ifndef FileDePrioriteAVL_HPP
+#define FileDePrioriteAVL_HPP
 #include <stdexcept>
 #include "AVL.hpp"
 /**
-* @class filedePrioriteAVL<K,V> htable.hpp
+* @class FileDePrioriteAVL<K,V> htable.hpp
 *
 * @brief Patron de classe implémentant des tables de hashages K-->V
 *
 */
 template <typename K>
-	class filedePrioriteAVL{
+	class FileDePrioriteAVL{
 		private:
 			AVL<K> *_racine;
 			AVL<K> *_minimum;
@@ -24,9 +24,9 @@ template <typename K>
 			/**
 			* constructeur de la file de priorite
 			*/
-			filedePrioriteAVL();
+			FileDePrioriteAVL();
 
-			~filedePrioriteAVL();
+			~FileDePrioriteAVL();
 			/**
 			* cette fonction permet de savoir si la file est vide ou non
 			* @return un booléen à vraie si la file est vide, false si elle contient des élements
@@ -52,5 +52,5 @@ template <typename K>
 			void racine();
 	};
 //---------------------------------------
-#include "filedePrioriteAVL.tpp"
+#include "FileDePrioriteAVL.tpp"
 #endif

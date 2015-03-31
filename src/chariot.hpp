@@ -28,83 +28,90 @@
 template < template <typename T> class FileDePriorite >
 class Chariot
 {
-   private:
-      double capacite_;
-      FileDePriorite<Produit> achats_;
-      
-   public:
-      /**
-       * @brief Constructeur
-       * @param contenance, la capacité d'accueil maximale du chariot, 50 par défaut
-       * 
-       * @b Complexité Θ(1)
-       */
-      Chariot(double contenance=50.0);
+	private:
+		// Capacité maximal du chariot
+		double capacite_;
+		// L'ensemble des produits dans le chariot rangés du plus petit au plus grand
+		FileDePriorite<Produit> achats_;
 
-      /**
-       * @brief Destructeur
-       * 
-       * @b Complexité Θ(1)
-       */
-      ~Chariot();
-      
-      /**
-       * @brief Accès à la capacité restante
-       * @return Capacité résiduelle = capacité initiale -- poids de tous les 
-       * produits dans le chariot
-       * 
-       * @b Complexité <em>À déterminer</em>
-       */
-      double capacite() const;
+	public:
+		/**
+		* @brief Constructeur
+		* @param contenance, la capacité d'accueil maximale du chariot, 50 par défaut
+		* 
+		* @b Complexité Θ(1)
+		*/
+		Chariot(double contenance=50.0);
 
-      /**
-       * @brief Test de présence de produits dans le chariot
-       * @return Vrai ssi le chariot ne contient aucun produit
-       * 
-       * @b Complexité <em>À déterminer</em>
-       */
-      bool estVide() const;
-      
-      /**
-       * @brief Ajout de produits dans le chariot
-       * @param p Le produit considéré
-       * @param qte Le nombre d'exemplaires à ajouter
-       * @pre La capacité résiduelle doit être suffisante
-       * 
-       * @b Complexité <em>À déterminer</em>
-       */
-      void ajouter(const Produit & p,unsigned int qte=1);
-      
-      /**
-       * @brief Retrait d'un exemplaire du produit le plus léger présent dans 
-       * le chariot
-       * @return Le produit retiré
-       * @pre Le chariot n'est pas vide
-       * 
-       * @b Complexité <em>À déterminer</em>
-       */
-      Produit retirer();
-      
-      /**
-       * @brief Encaissement du chariot dans un magasin
-       * @param mag Le magasin dans lequel le chariot est encaissé
-       * @return le coût total des produits dans le chariot
-       * @pre Les produits dans le chariot sont bien dans le catalogue de mag
-       * @post Le chariot est vide
-       * 
-       * @b Complexité <em>À déterminer</em>
-       */
-      double passageEnCaisse(const Magasin & mag);
-      
-      /**
-       * @brief Test de la possibilité d'acheter le chariot dans un magasin donné
-       * @param mag Le magasin considéré
-       * @return Vrai ssi tous les produits dans le chariot sont au catalogue du magasin ET sont en stock en quantité suffisante
-       * @post Le chariot est inchangé
-       * 
-       * @b Complexité <em>À déterminer</em>
-       */
-      bool estAchetable(const Magasin & mag);
+		/**
+		* @brief Destructeur
+		* 
+		* @b Complexité Θ(1)
+		*/
+		~Chariot();
+
+		/**
+		* @brief Accès à la capacité restante
+		* @return Capacité résiduelle = capacité initiale -- poids de tous les 
+		* produits dans le chariot
+		* 
+		* @b Complexité avec FileDePriorite Ω(nbp) et O(nbp*log(nbp)), où nbp est le nombre de produit dans le chariot
+		* @b Complexité avec AVL Ω(nbp) et O(nbp*log(nbp)), où nbp est le nombre de produit dans le chariot
+		*/
+		double capacite() const;
+
+		/**
+		* @brief Test de présence de produits dans le chariot
+		* @return Vrai ssi le chariot ne contient aucun produit
+		* 
+		* @b Complexité Θ(1)
+		*/
+		bool estVide() const;
+
+		/**
+		* @brief Ajout de produits dans le chariot
+		* @param p Le produit considéré
+		* @param qte Le nombre d'exemplaires à ajouter
+		* @pre La capacité résiduelle doit être suffisante
+		* 
+		* @b Complexité <em>À déterminer</em>
+		* @b Complexité <em>À déterminer</em>
+		*/
+		void ajouter(const Produit & p,unsigned int qte=1);
+
+		/**
+		* @brief Retrait d'un exemplaire du produit le plus léger présent dans 
+		* le chariot
+		* @return Le produit retiré
+		* @pre Le chariot n'est pas vide
+		* 
+		* @b Complexité <em>À déterminer</em>
+		* @b Complexité <em>À déterminer</em>
+		*/
+		Produit retirer();
+
+		/**
+		* @brief Encaissement du chariot dans un magasin
+		* @param mag Le magasin dans lequel le chariot est encaissé
+		* @return le coût total des produits dans le chariot
+		* @pre Les produits dans le chariot sont bien dans le catalogue de mag
+		* @post Le chariot est vide
+		* 
+		* @b Complexité <em>À déterminer</em>
+		* @b Complexité <em>À déterminer</em>
+		*/
+		double passageEnCaisse(const Magasin & mag);
+
+		/**
+		* @brief Test de la possibilité d'acheter le chariot dans un magasin donné
+		* @param mag Le magasin considéré
+		* @return Vrai ssi tous les produits dans le chariot sont au catalogue du magasin ET sont en stock en quantité suffisante
+		* @post Le chariot est inchangé
+		* 
+		* @b Complexité <em>À déterminer</em>
+		* @b Complexité <em>À déterminer</em>
+		*/
+		bool estAchetable(const Magasin & mag);
 
 };
 

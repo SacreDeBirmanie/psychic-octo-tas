@@ -1,10 +1,10 @@
 /**
-* @file filedePrioriteAVL.tpp
+* @file FileDePrioriteAVL.tpp
 * @author Gonnord Kévin, Vallée Sébastien
 * @since 11/02/2015
-* @brief Implémentation de la classe filedePrioriteAVL
+* @brief Implémentation de la classe FileDePrioriteAVL
 *
-* @b Note s'agissant d'un patron de classe, ce fichier est inclus dans filedePrioriteAVL.hpp
+* @b Note s'agissant d'un patron de classe, ce fichier est inclus dans FileDePrioriteAVL.hpp
 **/
 #include <typeinfo>
 #include <iostream>
@@ -12,24 +12,24 @@
 //---------------------------------------
 //Constructeur
 template<typename K>
-	filedePrioriteAVL<K>::filedePrioriteAVL() : _nb_elements(0),_minimum(NULL),_racine(NULL){
+	FileDePrioriteAVL<K>::FileDePrioriteAVL() : _nb_elements(0),_minimum(NULL),_racine(NULL){
 		
 	}
 
 //---------------------------------------
 //Constructeur
 template<typename K>
-	filedePrioriteAVL<K>::~filedePrioriteAVL(){
+	FileDePrioriteAVL<K>::~FileDePrioriteAVL(){
 		delete _racine;
 	}
 
 template<typename K>
-	bool filedePrioriteAVL<K>::estVide(){
+	bool FileDePrioriteAVL<K>::estVide(){
 		return _nb_elements ==0;
 	}
 
 template<typename K>
-	K filedePrioriteAVL<K>::premier(){
+	K FileDePrioriteAVL<K>::premier(){
 		if(_nb_elements == 0){
 			assert(_racine == NULL);
 			assert(_minimum == NULL);
@@ -39,7 +39,7 @@ template<typename K>
 	}
 
 template<typename K>
-	void filedePrioriteAVL<K>::enfiler(K element){
+	void FileDePrioriteAVL<K>::enfiler(K element){
 
 		AVL<K> * arbre  = new AVL<K>(element);
 		if(_nb_elements>0){
@@ -63,7 +63,7 @@ template<typename K>
 	}
 
 template<typename K>
-void filedePrioriteAVL<K>::defiler(){
+void FileDePrioriteAVL<K>::defiler(){
 	if(_nb_elements == 0){
 		assert(_racine == NULL);
 		assert(_minimum == NULL);
@@ -111,7 +111,7 @@ void filedePrioriteAVL<K>::defiler(){
 }
 
 template<typename K>
-void filedePrioriteAVL<K>::afficher(){
+void FileDePrioriteAVL<K>::afficher(){
 	if(_nb_elements == 0){
 		assert(_racine == NULL);
 		assert(_minimum == NULL);
@@ -146,7 +146,7 @@ void filedePrioriteAVL<K>::afficher(){
 }
 
 template<typename K>
-void filedePrioriteAVL<K>::racine(){
+void FileDePrioriteAVL<K>::racine(){
 	std::cout<<_racine->getEtiquette()<<std::endl;
 
 }

@@ -26,12 +26,12 @@ Chariot<FileDePriorite>::~Chariot()
 template < template <typename T> class FileDePriorite >
 double Chariot<FileDePriorite>::capacite() const
 {
-	// Recopie des produits dans le chariot
+	// Copie des produits dans le chariot
    	FileDePriorite<Produit> achats_bis = achats_;
 	// Capacité initialisée à zero
 	double capacite = 0;
 
-	// Tant que le chariot recopié n'est pas vide
+	// Tant que le chariot copié n'est pas vide
 	while ( !achats_bis.estVide() ) {
 		// On incrémente la capacite avec le poids du produits en haut du chariot
 		capacite = capacite + achats_bis.premier().poids();
@@ -99,13 +99,13 @@ bool Chariot<FileDePriorite>::estAchetable(const Magasin & mag)
 {
 	// Booléen qui confirme ou non que le chariot peut est achetable, initialisé à vrai
    	bool achetable = true;
-	// Recopie des produits du chariot
+	// Copie des produits du chariot
 	FileDePriorite<Produit> achats_bis = achats_;
 
-	// Tant que le chariot recopié n'est pas vide
+	// Tant que le chariot copié n'est pas vide
 	while ( !achats_bis.estVide() ) {
-		// Si le produit le plus léger 
-		if( mag.enCatalogue(achats_bis.premier()) && mag.stock(achats_bis.premier() = 0) ){
+		// Si le produit le plus léger n'est pas dans le catalogue ou s'il n'est pas en stock, le booléen passe à faux
+		if( !mag.enCatalogue(achats_bis.premier()) || mag.stock(achats_bis.premier()) = 0 ){
 			achetable = false;
 		}
 	}
