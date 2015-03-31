@@ -74,8 +74,7 @@ class Chariot
 		* @param qte Le nombre d'exemplaires à ajouter
 		* @pre La capacité résiduelle doit être suffisante
 		* 
-		* @b Complexité <em>À déterminer</em>
-		* @b Complexité <em>À déterminer</em>
+		* @b Complexité Ω(1) et O(log(nbp)), ou npb est le nombre de produits
 		*/
 		void ajouter(const Produit & p,unsigned int qte=1);
 
@@ -85,8 +84,7 @@ class Chariot
 		* @return Le produit retiré
 		* @pre Le chariot n'est pas vide
 		* 
-		* @b Complexité <em>À déterminer</em>
-		* @b Complexité <em>À déterminer</em>
+		* @b Complexité Ω(1) et O(log(nbp)), ou npb est le nombre de produits
 		*/
 		Produit retirer();
 
@@ -97,8 +95,7 @@ class Chariot
 		* @pre Les produits dans le chariot sont bien dans le catalogue de mag
 		* @post Le chariot est vide
 		* 
-		* @b Complexité <em>À déterminer</em>
-		* @b Complexité <em>À déterminer</em>
+		* @b Complexité Ω(nbp) et O(nbp*log(nbp)), ou npb est le nombre de produits
 		*/
 		double passageEnCaisse(const Magasin & mag);
 
@@ -108,8 +105,7 @@ class Chariot
 		* @return Vrai ssi tous les produits dans le chariot sont au catalogue du magasin ET sont en stock en quantité suffisante
 		* @post Le chariot est inchangé
 		* 
-		* @b Complexité <em>À déterminer</em>
-		* @b Complexité <em>À déterminer</em>
+		* @b Complexité Ω(nbp) et O(nbp*log(nbp)), ou npb est le nombre de produits
 		*/
 		bool estAchetable(const Magasin & mag) const;
 

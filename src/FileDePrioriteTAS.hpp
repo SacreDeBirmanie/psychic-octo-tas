@@ -58,21 +58,21 @@ class FileDePrioriteTAS
 		* @brief cette procédure permet d'ajouter un élement dans la file
 		* @param element l'élement à ajouter dans la file
 		*
-		* @b Complexité Ω(1) et O(log(nbe)), ou npb est le nombre d'éléments K
+		* @b Complexité Ω(1) et O(log(nbe)), ou nbe est le nombre d'éléments K
 		*/
 		void enfiler(const K & element);
 
 		/**
 		* @brief cette procédure permet d'enlever la racine de la file 
 		*
-		* @b Complexité Ω(1) et O(log(nbe)), ou npb est le nombre d'éléments K
+		* @b Complexité Ω(1) et O(log(nbe)), ou nbe est le nombre d'éléments K
 		*/
 		void defiler();
 	
 		/**
 		* @brief cette procédure permet d'enlever la racine de la file (le plus petit)
 		*
-		* @b Complexité Ω(1) et O(log(nbe)), ou npb est le nombre d'éléments K
+		* @b Complexité Ω(1) et O(log(nbe)), ou nbe est le nombre d'éléments K
 		*/
 		unsigned int taille() const;
 		
