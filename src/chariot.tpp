@@ -26,17 +26,15 @@ Chariot<FileDePriorite>::~Chariot()
 template < template <typename T> class FileDePriorite >
 double Chariot<FileDePriorite>::capacite() const
 {
-	// Copie des produits dans le chariot
-   	FileDePriorite<Produit> achats_bis = achats_;
 	// Capacité initialisée à zero
-	double capacite = 0;
+	double capacite = capacite_;
 
-	// Tant que le chariot copié n'est pas vide
-	while ( !achats_bis.estVide() ) {
+	// Tant que le chariot n'est pas vide
+	while ( !achats_.estVide() ) {
 		// On incrémente la capacite avec le poids du produits en haut du chariot
-		capacite = capacite + achats_bis.premier().poids();
+		capacite = capacite - achats_.premier().poids();
 		// On retire le produit
-		achats_bis.defiler();		
+		achats_.defiler();		
 	}
 	return capacite;
 }
@@ -51,10 +49,7 @@ bool Chariot<FileDePriorite>::estVide() const
 //----------------------------------------------------------------------------------------
 template < template <typename T> class FileDePriorite >
 void Chariot<FileDePriorite>::ajouter(const Produit & p,unsigned int nb/*=1*/)
-{
-	// Assertion qui vérifie si le chariot n'est pas vide
-   	assert( !achats_.estVide() );
-	
+{	
 	// Si la capacité résiduelle est additionnée au poids du produit à ajouter est inférieur ou égale a la capacité du chariot on ajoute le produit
 	if ( (capacite() + p.poids()) <= capacite_ ) {
 		achats_.enfiler(p);
@@ -99,13 +94,11 @@ bool Chariot<FileDePriorite>::estAchetable(const Magasin & mag)
 {
 	// Booléen qui confirme ou non que le chariot peut est achetable, initialisé à vrai
    	bool achetable = true;
-	// Copie des produits du chariot
-	FileDePriorite<Produit> achats_bis = achats_;
 
-	// Tant que le chariot copié n'est pas vide
-	while ( !achats_bis.estVide() ) {
+	// Tant que le chariot  n'est pas vide
+	while ( !achats_.estVide() ) {
 		// Si le produit le plus léger n'est pas dans le catalogue ou s'il n'est pas en stock, le booléen passe à faux
-		if( !mag.enCatalogue(achats_bis.premier()) || mag.stock(achats_bis.premier()) = 0 ){
+		if( !mag.enCatalogue(achats_.premier()) || mag.stock(achats_.premier()) == 0 ){
 			achetable = false;
 		}
 	}

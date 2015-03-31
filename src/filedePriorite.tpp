@@ -11,42 +11,46 @@
 //---------------------------------------
 //Constructeur
 template<typename K>
-	FileDePriorite<K>::FileDePriorite(){
-		_nb_elements = 0;	
-	}
+FileDePriorite<K>::FileDePriorite()
+{
+	_nb_elements = 0;	
+}
 //Destructeur
 template<typename K>
-	FileDePriorite<K>::~FileDePriorite(){
-	}
+FileDePriorite<K>::~FileDePriorite()
+{}
 
 template<typename K>
-	bool FileDePriorite<K>::estVide(){
-		return _nb_elements==0;
-	}
+bool FileDePriorite<K>::estVide() const
+{
+	return _nb_elements==0;
+}
 
 template<typename K>
-	K FileDePriorite<K>::premier(){
-		if(_nb_elements == 0)
-			throw std::string("/\\*****ERREUR :: LA FILE EST VIDE, FONCTION PREMIER SANS EFFET /_\\*****\n");
-		return _tableauDesValeurs[0];
-	}
+const K & FileDePriorite<K>::premier() const
+{
+	if(_nb_elements == 0)
+		throw std::string("/\\*****ERREUR :: LA FILE EST VIDE, FONCTION PREMIER SANS EFFET /_\\*****\n");
+	return _tableauDesValeurs[0];
+}
 
 template<typename K>
-	void FileDePriorite<K>::enfiler(K element){
-		_tableauDesValeurs[_nb_elements] = element;
-		int courant = _nb_elements;
-		_nb_elements = _nb_elements + 1;
-		K tmp;
-		while(courant != 0 && _tableauDesValeurs[courant]> _tableauDesValeurs[int(courant/2)]){
-			tmp = _tableauDesValeurs[int(courant/2)];
-			_tableauDesValeurs[int(courant/2)] = _tableauDesValeurs[courant];
-			_tableauDesValeurs[courant] = tmp;
-			courant = int(courant/2);
-		}
+void FileDePriorite<K>::enfiler(const K & element){
+	_tableauDesValeurs[_nb_elements] = element;
+	int courant = _nb_elements;
+	_nb_elements = _nb_elements + 1;
+	K tmp;
+	while(courant != 0 && _tableauDesValeurs[courant] < _tableauDesValeurs[int(courant/2)]){
+		tmp = _tableauDesValeurs[int(courant/2)];
+		_tableauDesValeurs[int(courant/2)] = _tableauDesValeurs[courant];
+		_tableauDesValeurs[courant] = tmp;
+		courant = int(courant/2);
 	}
+}
 
 template<typename K>
-void FileDePriorite<K>::defiler(){
+void FileDePriorite<K>::defiler()
+{
 	if(_nb_elements == 0)
 		throw std::string("/\\*****ERREUR :: LA FILE EST VIDE, FONCTION DEFILER SANS EFFET /_\\***** \n");
 	int courant = 0;
@@ -56,14 +60,14 @@ void FileDePriorite<K>::defiler(){
 	_tableauDesValeurs[0] = _tableauDesValeurs[_nb_elements];
 	
 	while ( courant <= _nb_elements && !trouve ) {
-		if (2*courant <= _nb_elements && _tableauDesValeurs[courant] < _tableauDesValeurs[2*courant]){
+		if (2*courant <= _nb_elements &&  _tableauDesValeurs[2*courant] < _tableauDesValeurs[courant]  ){
 			tmp = _tableauDesValeurs[courant];
 			_tableauDesValeurs[courant] = _tableauDesValeurs[2*courant];
 			_tableauDesValeurs[2*courant] = tmp;
 			courant = 2*courant;
 		}
-		else if(2*courant+1 <=_nb_elements && _tableauDesValeurs[courant] < _tableauDesValeurs[2*courant+1]){
-			tmp = _tableauDesValeurs[courant];
+		else if(2*courant+1 <=_nb_elements && _tableauDesValeurs[2*courant+1] < _tableauDesValeurs[courant] ){
+			tmp = _tableauDesValeurs[courant]; 
 			_tableauDesValeurs[courant] = _tableauDesValeurs[2*courant+1];
 			_tableauDesValeurs[2*courant+1] = tmp;
 			courant = 2*courant+1;
@@ -71,6 +75,12 @@ void FileDePriorite<K>::defiler(){
 		else
 			trouve = true;
 	}
+}
+
+template<typename K>
+unsigned int FileDePriorite<K>::taille() const
+{
+	return _nb_elements;
 }
 
 template<typename K>
