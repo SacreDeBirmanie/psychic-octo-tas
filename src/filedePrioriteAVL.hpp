@@ -43,7 +43,7 @@ class FileDePrioriteAVL
 		* 
 		* @b Complexité Θ(1)
 		*/
-		bool estVide();
+		bool estVide() const;
 
 		/**
 		* @brief Cette fonction permet de récupérer l'élement racine de la file (le plus grand selon le comparateur)
@@ -51,7 +51,7 @@ class FileDePrioriteAVL
 		* 
 		* @b Complexité Θ(1)
 		*/
-		K premier();
+		const K & premier() const;
 
 		/**
 		* @biref Cette procédure permet d'ajouter un élement dans la file
@@ -59,7 +59,7 @@ class FileDePrioriteAVL
 		* 
 		* @b Complexité Ω(1) et O(log(nbe)), ou npb est le nombre d'éléments K
 		*/
-		void enfiler(K element);
+		void enfiler(const K & element);
 
 		/**
 		* @brief Cette procédure permet d'enlever la racine de la file ( le plus grand élement selon le comparateur )

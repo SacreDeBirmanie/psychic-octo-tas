@@ -9,7 +9,7 @@
 #ifndef __CHARIOT_HPP__
 #define __CHARIOT_HPP__
 
-#include "filedePriorite.hpp"
+#include "FileDePrioriteTAS.hpp"
 #include "produit.hpp"
 #include <assert.h>
 
@@ -111,7 +111,7 @@ class Chariot
 		* @b Complexité <em>À déterminer</em>
 		* @b Complexité <em>À déterminer</em>
 		*/
-		bool estAchetable(const Magasin & mag);
+		bool estAchetable(const Magasin & mag) const;
 
 };
 

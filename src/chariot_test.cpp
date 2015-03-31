@@ -5,7 +5,7 @@
 #include "magasin.hpp"
 #include "chariot.hpp"
 
-#include "filedePriorite.hpp"
+#include "FileDePrioriteTAS.hpp"
 #include "filedePrioriteAVL.hpp"
 
 //------------------------------------------------------------------------------
@@ -40,10 +40,25 @@ int main()
 {
 	Magasin m("entrepot_11.txt");
 
+	cout << "AFFICHAGE DES ARTICLES DU MAGASIN" << endl;
+	cout << "---------" << endl;
+	START;
+	for (auto p : m.catalogue())
+	{
+		p.afficher();
+		cout << " :  prix=";
+		cout.width(4);
+		cout.fill('0');
+		cout << m.tarif(p) << "€";
+		cout << "  qté=" << m.stock(p) << endl;
+	}
+	STOP;
+	cout << ">>> Temps : " << TEMPS << "s" << endl << endl;
+
 	cout << "CONSTRUCTION" << endl;
 	cout << "------------" << endl;
 	START;
-	Chariot<FileDePriorite> caddie(10.0);
+	Chariot<FileDePrioriteAVL> caddie(10.0);
 	STOP;
 	cout << ">>> Temps : " << TEMPS << "s" << endl << endl;
 
@@ -53,8 +68,6 @@ int main()
 	cout << "est vide : " << caddie.estVide() << endl;
 	STOP;
 	cout << ">>> Temps : " << TEMPS << "s" << endl << endl;
-
-	Chariot<FileDePriorite> caddie_bis(10.0);
 
 	cout << "CAPACITE RESTANTE" << endl;
 	cout << "------------" << endl;
@@ -68,7 +81,9 @@ int main()
 	START;
 	for (auto p : m.catalogue())
 	{
+		p.afficher();
 		caddie.ajouter(p);
+		cout << endl;
 	}
 	STOP;
 	cout << ">>> Temps : " << TEMPS << "s" << endl << endl;
@@ -80,7 +95,7 @@ int main()
 	STOP;
 	cout << ">>> Temps : " << TEMPS << "s" << endl << endl;
 
-	caddie_bis = caddie;
+	
 
 	cout << "ESTVIDE" << endl;
 	cout << "------------" << endl;

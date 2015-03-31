@@ -1,5 +1,4 @@
-#include "filedePriorite.hpp"
-#include "filedePrioriteN.hpp"
+#include "FileDePrioriteTAS.hpp"
 
 #include "filedePrioriteAVL.hpp"
 #include "Comparateur.cpp"

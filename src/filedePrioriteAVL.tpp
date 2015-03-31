@@ -24,12 +24,12 @@ template<typename K>
 	}
 
 template<typename K>
-	bool FileDePrioriteAVL<K>::estVide(){
+	bool FileDePrioriteAVL<K>::estVide() const{
 		return _nb_elements ==0;
 	}
 
 template<typename K>
-	K FileDePrioriteAVL<K>::premier(){
+	const K & FileDePrioriteAVL<K>::premier() const{
 		if(_nb_elements == 0){
 			assert(_racine == NULL);
 			assert(_minimum == NULL);
@@ -39,7 +39,7 @@ template<typename K>
 	}
 
 template<typename K>
-	void FileDePrioriteAVL<K>::enfiler(K element){
+	void FileDePrioriteAVL<K>::enfiler(const K & element){
 
 		AVL<K> * arbre  = new AVL<K>(element);
 		if(_nb_elements>0){

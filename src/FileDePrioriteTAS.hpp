@@ -4,18 +4,18 @@
 * @since 11/02/2015
 * @brief Définition du type FileDePriorite générique par type des valeurs
 **/
-#ifndef FILEDEPRIORITE_HPP
-#define FILEDEPRIORITE_HPP
+#ifndef FILEDEPRIORITETAS_HPP
+#define FILEDEPRIORITETAS_HPP
 #include <stdexcept>
 /**
-* @class FileDePriorite<K,V> FileDePriorite.hpp
+* @class FileDePrioriteTAS<K,V> FileDePrioriteTAS.hpp
 *
 * @brief Patron de classe implémentant des FP
 *
 * L'élément le plus petit est le premier élément
 */
 template <typename K>
-class FileDePriorite
+class FileDePrioriteTAS
 {
 	private:
 		// Ensemble des éléments de la file
@@ -29,14 +29,14 @@ class FileDePriorite
 		*
 		* @b Complexité Θ(1)
 		*/
-		FileDePriorite();
+		FileDePrioriteTAS();
 
 		/**
 		* @brief Destructeur
 		*
 		* @b Complexité Θ(1)
 		*/
-		~FileDePriorite();
+		~FileDePrioriteTAS();
 
 		/**
 		* @brief Cette fonction permet de savoir si la file est vide ou non
@@ -47,7 +47,7 @@ class FileDePriorite
 		bool estVide() const;
 
 		/**
-		* @brief Cette fonction permet de récupérer l'élement racine de la file (le plus grand selon le comparateur)
+		* @brief Cette fonction permet de récupérer l'élement racine de la file (le plus petit)
 		* @return le petit élement de la file
 		*
 		* @b Complexité Θ(1)
@@ -63,14 +63,14 @@ class FileDePriorite
 		void enfiler(const K & element);
 
 		/**
-		* @brief cette procédure permet d'enlever la racine de la file ( le plus grand élement selon le comparateur )
+		* @brief cette procédure permet d'enlever la racine de la file 
 		*
 		* @b Complexité Ω(1) et O(log(nbe)), ou npb est le nombre d'éléments K
 		*/
 		void defiler();
 	
 		/**
-		* @brief cette procédure permet d'enlever la racine de la file ( le plus grand élement selon le comparateur )
+		* @brief cette procédure permet d'enlever la racine de la file (le plus petit)
 		*
 		* @b Complexité Ω(1) et O(log(nbe)), ou npb est le nombre d'éléments K
 		*/
@@ -82,5 +82,5 @@ class FileDePriorite
 		void afficher();
 };
 //---------------------------------------
-#include "filedePriorite.tpp"
+#include "FileDePrioriteTAS.tpp"
 #endif

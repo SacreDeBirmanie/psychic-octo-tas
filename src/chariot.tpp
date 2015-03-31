@@ -26,15 +26,17 @@ Chariot<FileDePriorite>::~Chariot()
 template < template <typename T> class FileDePriorite >
 double Chariot<FileDePriorite>::capacite() const
 {
+	// Copie des produits dans le chariot
+   	FileDePriorite<Produit> achats_tmp = achats_;
 	// Capacité initialisée à zero
 	double capacite = capacite_;
 
-	// Tant que le chariot n'est pas vide
-	while ( !achats_.estVide() ) {
-		// On incrémente la capacite avec le poids du produits en haut du chariot
-		capacite = capacite - achats_.premier().poids();
+	// Tant que le chariot copié n'est pas vide
+	while ( !achats_tmp.estVide() ) {
+		// On décrémente la capacite avec le poids du produits en haut du chariot
+		capacite = capacite - achats_tmp.premier().poids();
 		// On retire le produit
-		achats_.defiler();		
+		achats_tmp.defiler();		
 	}
 	return capacite;
 }
@@ -50,8 +52,8 @@ bool Chariot<FileDePriorite>::estVide() const
 template < template <typename T> class FileDePriorite >
 void Chariot<FileDePriorite>::ajouter(const Produit & p,unsigned int nb/*=1*/)
 {	
-	// Si la capacité résiduelle est additionnée au poids du produit à ajouter est inférieur ou égale a la capacité du chariot on ajoute le produit
-	if ( (capacite() + p.poids()) <= capacite_ ) {
+	// Si la capacité résiduelle additionnée au poids du produit à ajouter est inférieur ou égale a la capacité du chariot on ajoute le produit
+	if ( ( capacite() - p.poids() ) >= 0 ) {
 		achats_.enfiler(p);
 	}
 }
@@ -90,17 +92,20 @@ double Chariot<FileDePriorite>::passageEnCaisse(const Magasin & mag)
 
 //----------------------------------------------------------------------------------------
 template < template <typename T> class FileDePriorite >
-bool Chariot<FileDePriorite>::estAchetable(const Magasin & mag)
+bool Chariot<FileDePriorite>::estAchetable(const Magasin & mag) const
 {
 	// Booléen qui confirme ou non que le chariot peut est achetable, initialisé à vrai
    	bool achetable = true;
+	// Copie des produits dans le chariot
+   	FileDePriorite<Produit> achats_tmp = achats_;
 
-	// Tant que le chariot  n'est pas vide
-	while ( !achats_.estVide() ) {
+	// Tant que le chariot copié n'est pas vide
+	while ( !achats_tmp.estVide() ) {
 		// Si le produit le plus léger n'est pas dans le catalogue ou s'il n'est pas en stock, le booléen passe à faux
-		if( !mag.enCatalogue(achats_.premier()) || mag.stock(achats_.premier()) == 0 ){
+		if( !mag.enCatalogue(achats_tmp.premier()) || mag.stock(achats_tmp.premier()) == 0 ){
 			achetable = false;
 		}
+		achats_tmp.defiler();
 	}
 	return achetable;
 }
