@@ -48,7 +48,7 @@ void Chariot<FileDePriorite>::ajouter(const Produit & p,unsigned int nb/*=1*/)
 {
    	assert( !achats_.estVide() );
 	
-	if ( (capacite() + p.poids) <= capacite_ ) {
+	if ( (capacite() + p.poids()) <= capacite_ ) {
 		achats_.enfiler(p);
 	}
 }

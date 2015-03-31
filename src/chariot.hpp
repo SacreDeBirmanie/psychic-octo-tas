@@ -35,16 +35,16 @@ class Chariot
    public:
       /**
        * @brief Constructeur
-       * @param contenance La capacité d'accueil maximale du chariot, 50 par défaut
+       * @param contenance, la capacité d'accueil maximale du chariot, 50 par défaut
        * 
-       * @b Complexité <em>À déterminer</em>
+       * @b Complexité Θ(1)
        */
       Chariot(double contenance=50.0);
 
       /**
        * @brief Destructeur
        * 
-       * @b Complexité <em>À déterminer</em>
+       * @b Complexité Θ(1)
        */
       ~Chariot();
       

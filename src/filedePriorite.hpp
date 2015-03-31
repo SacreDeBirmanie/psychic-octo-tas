@@ -20,33 +20,54 @@ template <typename K>
 			int _nb_elements;
 		public :
 			/**
-			* constructeur de la file de priorite
+			* @brief Constructeur 
+			* @param contenance La capacité d'accueil maximale du chariot, 50 par défaut
+			*
+			* @b Complexité Θ(1)
 			*/
 			FileDePriorite();
+
 			/**
-			* constructeur de la file de priorite
+			* @brief Destructeur
+			*
+			* @b Complexité Θ(1)
 			*/
 			~FileDePriorite();
+
 			/**
 			* cette fonction permet de savoir si la file est vide ou non
 			* @return un booléen à vraie si la file est vide, false si elle contient des élements
+			*
+			* @b Complexité Θ(1)
 			*/
 			bool estVide();
+
 			/**
 			* cette fonction permet de récupérer l'élement racine de la file (le plus grand selon le comparateur)
 			* @return un type K, le plus grand élement de la file
+			*
+			* @b Complexité Θ(1)
 			*/
 			K premier();
+
 			/**
-			* cette procédure permet d'ajouter un élement dans la file
+			* @briefcette procédure permet d'ajouter un élement dans la file
 			* @param element l'élement à ajouter dans la file
+			*
+			* @b Complexité Θ(1)
 			*/
 			void enfiler(K element);
+
 			/**
-			* cette procédure permet d'enlever la racine de la file ( le plus grand élement selon le comparateur )
+			* @brief cette procédure permet d'enlever la racine de la file ( le plus grand élement selon le comparateur )
+			*
+			* @b Complexité Θ(1)
 			*/
 			void defiler();
-
+			
+			/**
+			* @brief fonction de test
+			*/
 			void afficher();
 	};
 //---------------------------------------
