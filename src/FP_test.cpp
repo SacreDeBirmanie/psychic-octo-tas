@@ -9,7 +9,7 @@ using namespace std;
 
 int main(int argc, char const *argv[])
 {
-	filedePrioriteAVL<int> mafile;
+	FileDePrioriteAVL<int> mafile;
 	cout<<"RESULTAT ATTENDU (PREMIER) [levé d'exeption] :";
 	//vérification de la levé de l'exeption pour premier
 	try{

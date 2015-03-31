@@ -1,5 +1,5 @@
 /**
-* @file FileDePrioriteAVL.tpp
+* @file filedePrioriteAVL.tpp
 * @author Gonnord Kévin, Vallée Sébastien
 * @since 11/02/2015
 * @brief Implémentation de la classe FileDePrioriteAVL
