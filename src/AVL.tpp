@@ -251,7 +251,7 @@ template<typename Valeur>
 		}
 
 		_balance += h; 
-		//equilibrage();
+		equilibrage();
 		return _balance;
 
 
