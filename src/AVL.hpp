@@ -17,15 +17,23 @@ class AVL  {
 	private : 
 		Valeur _etiquette;//etiquette du noeud
 		bool _marque;//marque initialiser à faux par defaut
+
+		bool _garde;
 		
 		AVL<Valeur> * _pere;//pere du noeud, NULL si racine
 		AVL<Valeur> * _filsG;//fils gauche du noeud
 		AVL<Valeur> * _filsD;//fils droit du noeud
 
-		int _nbNoeud;//nombre de noeud
+		int _hauteur;//hauteur max de ses fils
 		
 		int _balance;//balance du noeud
+
+		/**
+			* cette fonction permet de renvoyer la hauteur d'un noeud (-1 si le fils est nul, 0 s'il n'a aucun fils, 1 et plus s'il en a au moins un)
+			*/
 		
+		int hauteur(AVL<Valeur> * arbre);
+
 		/**
 			* cette procedure permet d'effectuer une rotation gauche sur le noeud, opération propre aux AVL
 			*/
@@ -91,12 +99,6 @@ class AVL  {
 		/**
 			* cette fonction retourne le nombre de sous AVL du noeud courant
 			*/
-		int getNbNoeud();
-
-		/**
-			* cette procedure permet de modifier la marque associe au noeud courant
-			* @param booleen, la nouvel valeur boolenne a associer
-			*/
 		void setMarque(bool marque);
 
 		/**
@@ -113,13 +115,13 @@ class AVL  {
 			* cette fonction permet d'ajouter au noeud courant un sous arbre, en fonction de l'etiquette de celui ci
 			* @param AVL, le nouveau sous arbre à insérer 
 			*/
-		int ajouter(AVL<Valeur> * arbre);
+		void ajouter(AVL<Valeur> * arbre);
 
 		/**
 			* cette fonction permet d'ajouter au noeud courant un fils avec une nouvelle etiquette
 			* @param e, la nouvel etiquette a inserer
 			*/
-		int ajouter(Valeur e);
+		void ajouter(Valeur e);
 		
 		/**
 			* cette procedure permet de vérifier l'equilibrage du noeud courant, et d'effectuer certaine rotation si necessaire

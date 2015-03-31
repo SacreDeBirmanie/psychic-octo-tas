@@ -8,7 +8,7 @@ using namespace std;
 int main(int argc, char const *argv[])
 {
 	AVL<int> * monarbre = new AVL<int>(2);
-
+	std::cout<<"ajout4"<<std::endl;
 	monarbre->ajouter(4);
 	monarbre = monarbre->racine();
 	cout<<"*****************"<<endl;
@@ -37,6 +37,7 @@ int main(int argc, char const *argv[])
 
 	for(it;it != su.end();++it)
 		cout<<*it<<",";
+	std::cout<<"ajout12"<<std::endl;
 	monarbre->ajouter(12);
 	monarbre = monarbre->racine();
 	cout<<"*****************"<<endl;
@@ -208,6 +209,8 @@ int main(int argc, char const *argv[])
 	monarbre->ajouter(1);
 	monarbre = monarbre->racine();
 
+
+	cout<<endl<<"#################AJOUTS FINIS##############"<<endl;
 	cout<<"*****************"<<endl;
 	pref = monarbre->prefix();
 	cout<<"**************"<<endl;

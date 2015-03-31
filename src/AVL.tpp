@@ -1,25 +1,13 @@
-/*template<typename Valeur>
-		void AVL<Valeur>::rotationG() {
-			std::cout<<"rotationG"<<std::endl;
-			AVL<Valeur>  * arbreb = _filsD;
-			int balance_a = _balance;
-			int balance_b = arbreb->_balance;
-			std::cout<<"["<<balance_a<<"]"<<std::endl;
-			std::cout<<"["<<balance_b<<"]"<<std::endl;
-		
-			_filsD = arbreb->_filsG;
-			arbreb->_filsG = this;
-
-			if(_filsD !=NULL){
-				_filsD->_pere = this;
-			}
-			arbreb->_pere =_pere;
-			_pere = arbreb;
-			_balance = balance_a - std::max(balance_b, 0) - 1;
-			arbreb->_balance = std::min(balance_a-2, std::min(balance_a+balance_b, balance_b-1));
-	}*/
-
 template<typename Valeur>
+	int AVL<Valeur>::hauteur(AVL<Valeur> * arbre){
+		if(arbre ==NULL)
+			return -1;
+		else
+			return arbre->_hauteur;
+	}
+
+
+/*template<typename Valeur>
 		void AVL<Valeur>::rotationG() {
 			std::cout<<"rotationG sur "<<_etiquette<<std::endl;
 			AVL<Valeur>  * pereA = _pere;
@@ -34,40 +22,57 @@ template<typename Valeur>
 					pereA->_filsD = filsD;
 				else if(pereA->_filsG == this)
 					pereA->_filsG = filsD;
-		
+			
+
 			filsD->_pere = pereA;
 
 			_filsD = petitFilsG;
-			_pere = filsD;
+			if(petitFilsG != NULL)
+				petitFilsG->_pere = this;
 
+			_pere = filsD;
 			filsD->_filsG = this;
 
 			_balance = balance_a - std::max(balance_b, 0) - 1;
 			filsD->_balance = std::min(balance_a-2, std::min(balance_a+balance_b-2, balance_b-1));
 
+	}*/
+template<typename Valeur>
+		void AVL<Valeur>::rotationG() {
+			//std::cout<<"rotationG sur "<<_etiquette<<std::endl;
+			assert(_filsD !=NULL);
+			AVL<Valeur>  * pereA = _pere;
+			AVL<Valeur> * filsD = _filsD;
+
+			int balance_b = filsD->_balance;
+			int balance_a = _balance;
+
+			_filsD = filsD->_filsG;
+			if(_filsD !=NULL)
+				_filsD->_pere = this;
+
+			filsD->_filsG = this;
+			_pere = filsD;
+
+			if(pereA !=NULL)
+				if(pereA->_filsD == this)
+					pereA->_filsD = filsD;
+				else if(pereA->_filsG == this)
+					pereA->_filsG = filsD;
+			filsD->_pere = pereA;
+
+
+				_hauteur = std::max(hauteur(_filsG), hauteur(_filsD)) +1;
+				filsD->_hauteur = std::max(hauteur(filsD->_filsG),hauteur(filsD->_filsD)) + 1;
+
+				_balance = hauteur (_filsD) - hauteur(_filsG);
+				filsD->_balance = hauteur(filsD->_filsD) - hauteur(filsD->_filsG);
+
+			//std::cout<<"Fin de rotationG"<<std::endl;
+
 	}
 
 /*template<typename Valeur>	
-		void AVL<Valeur>::rotationD() {
-			std::cout<<"rotationD"<<std::endl;
-			AVL<Valeur>  * arbreb = _filsG;
-			int balance_a = _balance;
-			int balance_b = arbreb->_balance;
-			std::cout<<"["<<balance_a<<"]"<<std::endl;
-			std::cout<<"["<<balance_b<<"]"<<std::endl;
-		
-			_filsG = arbreb->_filsD;
-			arbreb->_filsD = this;
-			if(_filsG !=NULL){
-				_filsG->_pere = this;
-			}
-			arbreb->_pere =_pere;
-			_pere = arbreb;
-			_balance = balance_a - std::max(balance_b, 0) - 1;
-			arbreb->_balance = std::min(balance_a-2, std::min(balance_a+balance_b, balance_b-1));
-		}*/
-
-template<typename Valeur>	
 		void AVL<Valeur>::rotationD() {
 			std::cout<<"rotationD sur "<<_etiquette<<std::endl;
 			AVL<Valeur>  * pereA = _pere;
@@ -86,13 +91,45 @@ template<typename Valeur>
 			filsG->_pere = pereA;
 
 			_filsG = petitFilsD;
-			_pere = filsG;
+			if(petitFilsD != NULL)
+				petitFilsD->_pere = this;
 
+			_pere = filsG;
 			filsG->_filsD = this;
 
 			_balance = balance_a - std::max(balance_b, 0) - 1;
 			filsG->_balance = std::min(balance_a-2, std::min(balance_a+balance_b-2, balance_b-1));
+		}*/
+template<typename Valeur>	
+		void AVL<Valeur>::rotationD() {
+			//std::cout<<"rotationD sur "<<_etiquette<<std::endl;
+			AVL<Valeur>  * pereA = _pere;
+			AVL<Valeur> * filsG = _filsG;
+
+			int balance_b = filsG->_balance;
+			int balance_a = _balance;
+
+			_filsG = filsG->_filsD;
+			if(_filsG !=NULL)
+				_filsG->_pere = this;
+
+			filsG->_filsD = this;
+			_pere = filsG;
+
+			if(pereA !=NULL)
+				if(pereA->_filsD == this)
+					pereA->_filsD = filsG;
+				else if(pereA->_filsG == this)
+					pereA->_filsG = filsG;
+			filsG->_pere = pereA;
+
+			_hauteur = std::max(hauteur(_filsG), hauteur(_filsD)) +1;
+				filsG->_hauteur = std::max(hauteur(filsG->_filsG),hauteur(filsG->_filsD)) + 1;
+
+				_balance = hauteur (_filsD) - hauteur(_filsG);
+				filsG->_balance = hauteur(filsG->_filsD) - hauteur(filsG->_filsG);
 		}
+
 
 template<typename Valeur>
 		void AVL<Valeur>::dRotationG() {
@@ -113,7 +150,9 @@ template<typename Valeur>
 			_filsG = NULL;
 			_filsD = NULL;
 			_marque = false;
+			_garde = false;
 			_balance = 0;
+			_hauteur = 0;
 		}
 
 template<typename Valeur>
@@ -159,11 +198,6 @@ template<typename Valeur>
 	}
 		
 template<typename Valeur>
-	int AVL<Valeur>::getNbNoeud() {
-			return _nbNoeud;
-	}
-		
-template<typename Valeur>
 	void AVL<Valeur>::setMarque(bool marque) {
 			_marque = marque;
 	}
@@ -171,10 +205,12 @@ template<typename Valeur>
 template<typename Valeur>
 	void AVL<Valeur>::supprimerFilsGD() {
 			if(_filsG != NULL){
+				_garde = true;
 				delete(_filsG);
 				_filsG = NULL;
 			}
 			else if(_filsD !=NULL){
+				_garde = true;
 				delete(_filsD);
 				_filsD = NULL;
 			}
@@ -193,67 +229,78 @@ template<typename Valeur>
 	}
 		
 template<typename Valeur>	
-		int AVL<Valeur>::ajouter(AVL<Valeur> * arbre) {
-		int h;
+		void AVL<Valeur>::ajouter(AVL<Valeur> * arbre) {
 		if(arbre->_etiquette <= _etiquette){
 			if(_filsG != NULL){
-				h = _filsG->ajouter(arbre);
-				h = -h;
+				_filsG->ajouter(arbre);
+				_hauteur = std::max(hauteur(_filsG),hauteur(_filsD))+1;
+
 			}
 			else{
 				_filsG = arbre;
 				_filsG->_pere = this;
-				h = -1;
+				_hauteur = std::max(hauteur(_filsD),1);
 			}
 		}
 		else{
 			if(_filsD != NULL){
-				h =_filsD->ajouter(arbre);
-				
+				_filsD->ajouter(arbre);
+				_hauteur = std::max(hauteur(_filsG),hauteur(_filsD))+1;
 			}
 			else{
 				_filsD = arbre;
 				_filsD->_pere=this;
-				h = 1;
+				_hauteur = std::max(hauteur(_filsG),1);
 			}
 		}
 
-		_balance += h; 
-		//equilibrage();
-		return _balance;
+		_balance = hauteur(_filsD) - hauteur(_filsG);
+		//std::cout<<std::max(hauteur(_filsD),0)<<"_"<<std::max(hauteur(_filsG),0)<<"**"<<_balance<<": "<<_etiquette<<std::endl;
+		//modif ajout VAL
+		if(_garde == false)
+			equilibrage();
+
+		_hauteur = std::max(hauteur(_filsG),hauteur(_filsD))+1;
+		_balance = hauteur(_filsD) - hauteur(_filsG);
+		//modif ajout VAL
 }
 		
 template<typename Valeur>	
-		int AVL<Valeur>::ajouter(Valeur e) {
+		void AVL<Valeur>::ajouter(Valeur e) {
 
-		int h;
 		if(e <= _etiquette){
 			if(_filsG != NULL){
-				h = _filsG->ajouter(e);
-				h = -h;
+				_filsG->ajouter(e);
+				_hauteur = std::max(hauteur(_filsG),hauteur(_filsD))+1;
+
 			}
 			else{
 				_filsG = new AVL<Valeur>(e);
 				_filsG->_pere = this;
-				h = -1;
+				_hauteur = std::max(hauteur(_filsD),1);
 			}
 		}
 		else{
 			if(_filsD != NULL){
-				h =_filsD->ajouter(e);
-				
+				_filsD->ajouter(e);
+				_hauteur = std::max(hauteur(_filsG),hauteur(_filsD))+1;
 			}
 			else{
 				_filsD = new AVL<Valeur>(e);
 				_filsD->_pere=this;
-				h = 1;
+				_hauteur = std::max(hauteur(_filsG),1);
+				std::cout<<_hauteur<<"||||"<<std::endl;
 			}
 		}
 
-		_balance += h; 
-		equilibrage();
-		return _balance;
-
+		_balance = hauteur(_filsD) - hauteur(_filsG);
+		//std::cout<<std::max(hauteur(_filsD),0)<<"_"<<std::max(hauteur(_filsG),0)<<"**"<<_balance<<": "<<_etiquette<<std::endl;
+		//modif ajout VAL
+		if(_garde == false)
+			equilibrage();
+		_hauteur = std::max(hauteur(_filsG),hauteur(_filsD))+1;
+		_balance = hauteur(_filsD) - hauteur(_filsG);
+		//modif ajout VAL
 
 }
 
