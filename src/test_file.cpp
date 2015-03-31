@@ -30,10 +30,10 @@ int main(int argc, char const *argv[])
 	
 	mafile.afficher();
 	
-	cout<<"RESULTAT ATTENDU (PREMIER) [8] :";
+	cout<<"RESULTAT ATTENDU (PREMIER) [3] :";
 	cout<<mafile.premier()<<endl;
 	mafile.defiler();
-	cout<<"RESULTAT ATTENDU (PREMIER) [7] :";
+	cout<<"RESULTAT ATTENDU (PREMIER) [3] :";
 	cout<<mafile.premier()<<endl;
 	mafile.defiler();
 
@@ -53,23 +53,23 @@ int main(int argc, char const *argv[])
 	mafile.enfiler(9);
 	mafile.enfiler(3);
 	
-
-	cout<<"RESULTAT ATTENDU (PREMIER,ESTVIDE) [9,0(faux)] :";
+	mafile.afficher();
+	cout<<"RESULTAT ATTENDU (PREMIER,ESTVIDE) [3,0(faux)] :";
 	cout<<mafile.premier()<<","<<mafile.estVide()<<endl;
 	mafile.defiler();
-	cout<<"RESULTAT ATTENDU (PREMIER,ESTVIDE) [8,0(faux)] :";
+	cout<<"RESULTAT ATTENDU (PREMIER,ESTVIDE) [3,0(faux)] :";
+	cout<<mafile.premier()<<","<<mafile.estVide()<<endl;
+	mafile.defiler();
+	cout<<"RESULTAT ATTENDU (PREMIER,ESTVIDE) [3,0(faux)] :";
 	cout<<mafile.premier()<<","<<mafile.estVide()<<endl;
 	mafile.defiler();
 	cout<<"RESULTAT ATTENDU (PREMIER,ESTVIDE) [4,0(faux)] :";
 	cout<<mafile.premier()<<","<<mafile.estVide()<<endl;
 	mafile.defiler();
-	cout<<"RESULTAT ATTENDU (PREMIER,ESTVIDE) [3,0(faux)] :";
+	cout<<"RESULTAT ATTENDU (PREMIER,ESTVIDE) [8,0(faux)] :";
 	cout<<mafile.premier()<<","<<mafile.estVide()<<endl;
 	mafile.defiler();
-	cout<<"RESULTAT ATTENDU (PREMIER,ESTVIDE) [3,0(faux)] :";
-	cout<<mafile.premier()<<","<<mafile.estVide()<<endl;
-	mafile.defiler();
-	cout<<"RESULTAT ATTENDU (PREMIER,ESTVIDE) [3,0(faux)] :";
+	cout<<"RESULTAT ATTENDU (PREMIER,ESTVIDE) [9,0(faux)] :";
 	cout<<mafile.premier()<<","<<mafile.estVide()<<endl;
 	mafile.defiler();
 
