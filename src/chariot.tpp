@@ -12,7 +12,8 @@
 template < template <typename T> class FileDePriorite >
 Chariot<FileDePriorite>::Chariot(double contenance/*=50.0*/)
 {
-   capacite_ = contenance;
+	// Initialisation de la capacité du chariot
+	capacite_ = contenance;
 }
 
 //----------------------------------------------------------------------------------------
@@ -25,12 +26,17 @@ Chariot<FileDePriorite>::~Chariot()
 template < template <typename T> class FileDePriorite >
 double Chariot<FileDePriorite>::capacite() const
 {
+	// Recopie des produits dans le chariot
    	FileDePriorite<Produit> achats_bis = achats_;
+	// Capacité initialisée à zero
 	double capacite = 0;
 
+	// Tant que le chariot n'est pas vide
 	while ( !achats_bis.estVide() ) {
-			capacite = capacite + achats_bis.premier().poids();
-			achats_bis.defiler();		
+		// On incrémente la capacite avec le poids du produits en haut du chariot
+		capacite = capacite + achats_bis.premier().poids();
+		// On retire le produit
+		achats_bis.defiler();		
 	}
 	return capacite;
 }
@@ -46,8 +52,10 @@ bool Chariot<FileDePriorite>::estVide() const
 template < template <typename T> class FileDePriorite >
 void Chariot<FileDePriorite>::ajouter(const Produit & p,unsigned int nb/*=1*/)
 {
+	// Assertion qui vérifie si le chariot n'est pas vide
    	assert( !achats_.estVide() );
 	
+	// Si la capacité résiduelle et le poids du produit ajouté est inférieur ou égale a la capacité du chariot on ajoute le produit
 	if ( (capacite() + p.poids()) <= capacite_ ) {
 		achats_.enfiler(p);
 	}
